@@ -51,12 +51,14 @@ export default function App() {
   const envW0        = Math.min(vw * 0.88, 520);
   const envH0        = envW0 * (280 / 420);
   const centerOffset = vh / 2 - envH0 / 2;
-  const envTYpx      = -(1 - p) * centerOffset;
+  // Fase 1 (0→300vh): sube al centro
+  const envTYpx1 = -(1 - p) * centerOffset;
+  // Fase 2 (300vh→): sigue bajando fuera de pantalla
+  const extraScroll = Math.max(0, scrollY - vh * 3);
+  const envTYpx  = envTYpx1 + extraScroll * 0.25;
   const envRadius    = Math.round(4 * (1 - p));
   const envWidth     = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
 
-  // Sobre desaparece: empieza a 350vh, termina a 400vh
-  const envOpacity = p < 1 ? 1 : Math.max(0, 1 - (scrollY - vh * 3.5) / (vh * 0.5));
 
   return (
     <>
@@ -64,16 +66,13 @@ export default function App() {
         <source src="" type="audio/mpeg" />
       </audio>
 
-      {/* Fondo oscuro — fixed, desaparece junto con el sobre */}
-      <div
-        className="cover-bg-dark"
-        style={{
-          position: 'fixed', inset: 0, zIndex: 1,
-          opacity: envOpacity,
-          pointerEvents: envOpacity <= 0 ? 'none' : 'auto',
-        }}
-      />
+      {/* Fondo oscuro — solo visible mientras el contenido no ha subido a taparlo */}
+      {scrollY < vh * 4 && (
+        <div className="cover-bg-dark" style={{ position: 'fixed', inset: 0, zIndex: 1 }} />
+      )}
 
+
+      {<>
 
       {/* ── CAPA AZUL z:2 — solapa + pliegue superior (quedan DETRÁS del contenido) ── */}
       <div className="env-box" style={{ position:'fixed', bottom:0, left:'50%',
@@ -156,6 +155,8 @@ export default function App() {
           <line x1="420" y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
         </svg>
       </div>
+
+      </> }
 
       {/* Hint */}
       <div
