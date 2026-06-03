@@ -75,73 +75,87 @@ export default function App() {
       />
 
 
-      {/* Sobre — fixed encima del contenido */}
-      {envOpacity > 0 && (
-        <div
-          className="env-box"
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            left: '50%',
-            transform: `translateX(-50%) translateY(${envTYpx}px)`,
-            width: envWidth,
-            borderRadius: `${envRadius}px`,
-            zIndex: 10,
-            opacity: envOpacity,
-          }}
-        >
-          <div className="env-body">
-            <svg className="env-folds" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+      {/* ── CAPA AZUL z:2 — solapa + pliegue superior (quedan DETRÁS del contenido) ── */}
+      <div className="env-box" style={{ position:'fixed', bottom:0, left:'50%',
+        transform:`translateX(-50%) translateY(${envTYpx}px)`,
+        width:envWidth, borderRadius:`${envRadius}px`, zIndex:2, overflow:'visible' }}>
+
+        {/* Fondo blanco del sobre */}
+        <div style={{ position:'absolute', inset:0, background:'#f0ead8',
+          borderRadius:`${envRadius}px`,
+          boxShadow:'0 20px 60px rgba(0,0,0,0.6), 0 6px 20px rgba(0,0,0,0.4)' }} />
+
+        {/* Pliegue superior (triángulo de la parte alta del cuerpo) */}
+        <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%', overflow:'visible' }}
+          viewBox="0 0 420 280" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gt" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#e0d9c8"/><stop offset="100%" stopColor="#ede7d6"/>
+            </linearGradient>
+          </defs>
+          {/* Triángulo superior — de esquina a esquina hacia el centro */}
+          <path d="M0 0 L420 0 L210 168 Z" fill="url(#gt)"/>
+          <line x1="0" y1="0" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+          <line x1="420" y1="0" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+        </svg>
+
+        {/* Solapa animada */}
+        <div className="env-flap-scene">
+          <div className="env-flap" style={{ transform:`rotateX(${flapDeg}deg)` }}>
+            <svg className="env-flap-svg" viewBox="0 0 420 200"
+              style={{ backfaceVisibility:'hidden' }}>
               <defs>
-                <linearGradient id="gl" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#d6cfbc"/><stop offset="100%" stopColor="#ede7d6"/>
-                </linearGradient>
-                <linearGradient id="gr" x1="100%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#cfc8b5"/><stop offset="100%" stopColor="#ede7d6"/>
-                </linearGradient>
-                <linearGradient id="gb" x1="0%" y1="100%" x2="0%" y2="0%">
-                  <stop offset="0%" stopColor="#c8c1ae"/><stop offset="100%" stopColor="#ddd7c5"/>
+                <linearGradient id="fg" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#8d9773"/><stop offset="100%" stopColor="#5e6a47"/>
                 </linearGradient>
               </defs>
-              <path d="M0 0 L210 168 L0 280"    fill="url(#gl)"/>
-              <path d="M420 0 L210 168 L420 280" fill="url(#gr)"/>
-              <path d="M0 280 L210 168 L420 280" fill="url(#gb)"/>
-              <line x1="0"   y1="0"   x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
-              <line x1="420" y1="0"   x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
-              <line x1="0"   y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
-              <line x1="420" y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+              <path d="M0 0 L420 0 L210 190 Z" fill="url(#fg)"/>
+              <g style={{ opacity:sealOp }}>
+                <circle cx="210" cy="78" r="30" fill="#6b7550"/>
+                <circle cx="210" cy="78" r="25" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
+                <text x="210" y="86" textAnchor="middle"
+                  fontFamily="'Great Vibes', cursive" fontSize="22"
+                  fill="rgba(255,255,255,0.88)">B&amp;R</text>
+              </g>
+            </svg>
+            <svg className="env-flap-svg" viewBox="0 0 420 200"
+              style={{ backfaceVisibility:'hidden', transform:'rotateY(180deg)' }}>
+              <path d="M0 0 L420 0 L210 190 Z" fill="#e8e2d0"/>
+              <path d="M0 0 L420 0 L210 190 Z" fill="none" stroke="#c4bba8" strokeWidth="0.8"/>
             </svg>
           </div>
-
-          <div className="env-flap-scene">
-            <div className="env-flap" style={{ transform: `rotateX(${flapDeg}deg)` }}>
-              {/* Cara frontal — verde sage, visible cuando está cerrada */}
-              <svg className="env-flap-svg" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg"
-                style={{ backfaceVisibility: 'hidden' }}>
-                <defs>
-                  <linearGradient id="fg" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#8d9773"/><stop offset="100%" stopColor="#5e6a47"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0 0 L420 0 L210 190 Z" fill="url(#fg)"/>
-                <g style={{ opacity: sealOp }}>
-                  <circle cx="210" cy="78" r="30" fill="#6b7550"/>
-                  <circle cx="210" cy="78" r="25" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
-                  <text x="210" y="86" textAnchor="middle"
-                    fontFamily="'Great Vibes', cursive" fontSize="22"
-                    fill="rgba(255,255,255,0.88)">B&amp;R</text>
-                </g>
-              </svg>
-              {/* Cara trasera — interior crema, visible cuando está abierta (volteada) */}
-              <svg className="env-flap-svg" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg"
-                style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-                <path d="M0 0 L420 0 L210 190 Z" fill="#e8e2d0"/>
-                <path d="M0 0 L420 0 L210 190 Z" fill="none" stroke="#c4bba8" strokeWidth="0.8"/>
-              </svg>
-            </div>
-          </div>
         </div>
-      )}
+      </div>
+
+      {/* ── CAPA ROJA z:4 — pliegues laterales e inferior (van ENCIMA del contenido) ── */}
+      <div className="env-box" style={{ position:'fixed', bottom:0, left:'50%',
+        transform:`translateX(-50%) translateY(${envTYpx}px)`,
+        width:envWidth, borderRadius:`${envRadius}px`, zIndex:4, pointerEvents:'none' }}>
+        <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%' }}
+          viewBox="0 0 420 280" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gl" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#d6cfbc"/><stop offset="100%" stopColor="#ede7d6"/>
+            </linearGradient>
+            <linearGradient id="gr" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#cfc8b5"/><stop offset="100%" stopColor="#ede7d6"/>
+            </linearGradient>
+            <linearGradient id="gb" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#c8c1ae"/><stop offset="100%" stopColor="#ddd7c5"/>
+            </linearGradient>
+          </defs>
+          {/* Pliegue lateral izquierdo */}
+          <path d="M0 0 L210 168 L0 280" fill="url(#gl)"/>
+          {/* Pliegue lateral derecho */}
+          <path d="M420 0 L210 168 L420 280" fill="url(#gr)"/>
+          {/* Pliegue inferior */}
+          <path d="M0 280 L210 168 L420 280" fill="url(#gb)"/>
+          <line x1="0"   y1="0"   x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+          <line x1="420" y1="0"   x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+          <line x1="0"   y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+          <line x1="420" y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+        </svg>
+      </div>
 
       {/* Hint */}
       <div
@@ -163,8 +177,8 @@ export default function App() {
       {/* Spacer de 400vh = sobre completamente abajo mucho antes de que salga el contenido */}
       <div style={{ height: '400vh' }} />
 
-      {/* Contenido — flujo normal, empieza en scrollY=100vh */}
-      <div className="invite-content">
+      {/* Contenido — z:3, entre los azules (2) y los rojos (4) */}
+      <div className="invite-content" style={{ position:'relative', zIndex:3 }}>
         <Intro />
         <GreenSection audioRef={audioRef} playing={playing} setPlaying={setPlaying} />
         <EventSection />
