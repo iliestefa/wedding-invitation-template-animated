@@ -148,12 +148,11 @@
   top: 0;
   left: 0;
   right: 0;
-  /* Altura de la solapa: el triángulo llega al 68% del sobre */
   height: 72%;
   perspective: 900px;
   z-index: 10;
-  /* Cortar lo que sobrepase el borde superior del sobre */
-  overflow: hidden;
+  /* Sin overflow:hidden para que la solapa abierta se vea por encima del sobre */
+  overflow: visible;
 }
 
 .env-flap {
@@ -169,10 +168,6 @@
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.env-flap-svg.back {
-  transform: rotateY(180deg);
 }
 
 /* Hint de scroll */

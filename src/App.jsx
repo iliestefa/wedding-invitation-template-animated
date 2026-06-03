@@ -115,8 +115,9 @@ export default function App() {
 
           <div className="env-flap-scene">
             <div className="env-flap" style={{ transform: `rotateX(${flapDeg}deg)` }}>
-              <svg className="env-flap-svg front" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg"
-                style={{ opacity: flapP < 0.5 ? 1 : Math.max(0, 1 - (flapP - 0.5) * 4) }}>
+              {/* Cara frontal — verde sage, visible cuando está cerrada */}
+              <svg className="env-flap-svg" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg"
+                style={{ backfaceVisibility: 'hidden' }}>
                 <defs>
                   <linearGradient id="fg" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#8d9773"/><stop offset="100%" stopColor="#5e6a47"/>
@@ -131,9 +132,10 @@ export default function App() {
                     fill="rgba(255,255,255,0.88)">B&amp;R</text>
                 </g>
               </svg>
-              <svg className="env-flap-svg back" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg"
-                style={{ opacity: flapP > 0.5 ? Math.min(1, (flapP - 0.5) * 3) : 0 }}>
-                <path d="M0 0 L420 0 L210 190 Z" fill="#e2dccb"/>
+              {/* Cara trasera — interior crema, visible cuando está abierta (volteada) */}
+              <svg className="env-flap-svg" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg"
+                style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                <path d="M0 0 L420 0 L210 190 Z" fill="#e8e2d0"/>
                 <path d="M0 0 L420 0 L210 190 Z" fill="none" stroke="#c4bba8" strokeWidth="0.8"/>
               </svg>
             </div>
