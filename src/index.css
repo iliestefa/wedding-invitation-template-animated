@@ -23,6 +23,7 @@ html { scroll-behavior: smooth; }
 
 body {
   background: #0e1109;
+  padding-bottom: env(safe-area-inset-bottom);
   min-height: 100vh;
   font-family: 'Cormorant Garamond', serif;
   color: var(--ink);
