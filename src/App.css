@@ -765,7 +765,7 @@ section {
 .ev-ic {
   width: 40px;
   height: 40px;
-  margin: 0 auto 12px;
+  margin: 0 auto 6px;
   color: var(--sage);
 }
 .ev-ic svg {

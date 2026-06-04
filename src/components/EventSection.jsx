@@ -28,12 +28,7 @@ export default function EventSection() {
       <div className="ev-row rv">
         <div className="ev-item">
           <div className="ev-ic">
-            {/* Icono anillos — Heroicons outline */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="9" cy="14" r="5"/>
-              <circle cx="15" cy="14" r="5"/>
-              <path d="M12 4l1.5 2.5L12 9l-1.5-2.5Z"/>
-            </svg>
+            <i className="fa-solid fa-church" style={{ fontSize:'28px', color:'var(--sage)' }} />
           </div>
           <div className="ev-time">5:30 PM</div>
           <div className="ev-type">Ceremonia</div>
@@ -43,11 +38,7 @@ export default function EventSection() {
 
         <div className="ev-item">
           <div className="ev-ic">
-            {/* Icono copas brindis */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M8 22h8M12 11v11M7 2l1 9h8l1-9"/>
-              <path d="M7 2C7 2 5 6 7 9h10c2-3 0-7 0-7"/>
-            </svg>
+            <i className="fa-solid fa-champagne-glasses" style={{ fontSize:'28px', color:'var(--sage)' }} />
           </div>
           <div className="ev-time">6:30 PM</div>
           <div className="ev-type">Recepción</div>
