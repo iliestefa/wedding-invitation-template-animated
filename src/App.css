@@ -466,7 +466,7 @@ section {
 .green {
   background: linear-gradient(170deg, #7a8460, #636d4a);
   color: var(--white);
-  padding: 72px 32px 80px;
+  padding: 72px 32px;
   text-align: center;
 }
 
@@ -562,7 +562,7 @@ section {
 
 .story {
   max-width: 480px;
-  margin: 0 auto;
+  margin-top: 14px;
   font-size: clamp(16px, 4.2vw, 18px);
   line-height: 1.8;
   font-style: italic;
@@ -620,40 +620,60 @@ section {
 }
 
 .faltan {
-  margin-top: 52px;
   font-size: 13px;
   letter-spacing: 0.46em;
   font-weight: 600;
   opacity: 0.7;
 }
 
-.cd {
-  margin-top: 12px;
-  font-size: clamp(32px, 9vw, 46px);
-  font-weight: 500;
-  letter-spacing: 0.04em;
+.cd-wrap {
+  margin-top: 4px;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  gap: 8px;
+  gap: 0;
 }
 
-.cd .sep {
-  opacity: 0.4;
-  animation: blink 1s steps(1) infinite;
-}
-@keyframes blink {
-  50% {
-    opacity: 0.8;
-  }
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(52px, 14vw, 80px);
 }
 
-.cd.lbls {
+.cd-num {
+  font-size: clamp(44px, 12vw, 68px);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.cd-lbl {
   margin-top: 6px;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.12em;
   opacity: 0.6;
-  gap: clamp(16px, 6vw, 28px);
+  text-transform: uppercase;
 }
+
+.cd-sep {
+  font-size: clamp(44px, 12vw, 68px);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0.4;
+  padding: 0 4px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.8; }
+}
+
+/* keep old selectors from breaking anything */
+.cd { display: none; }
+.cd.lbls { display: none; }
 
 /* ══════════════════════════════════════
    EVENTOS

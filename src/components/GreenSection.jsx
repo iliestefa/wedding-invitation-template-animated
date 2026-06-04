@@ -30,21 +30,23 @@ export default function GreenSection() {
     <section className="green">
       <div className="rv">
 
+        <div className="faltan">FALTAN</div>
+        <div className="cd-wrap">
+          <div className="cd-unit"><span className="cd-num">{d}</span><span className="cd-lbl">Días</span></div>
+          <span className="cd-sep">:</span>
+          <div className="cd-unit"><span className="cd-num">{h}</span><span className="cd-lbl">Horas</span></div>
+          <span className="cd-sep">:</span>
+          <div className="cd-unit"><span className="cd-num">{m}</span><span className="cd-lbl">Min</span></div>
+          <span className="cd-sep">:</span>
+          <div className="cd-unit"><span className="cd-num">{s}</span><span className="cd-lbl">Seg</span></div>
+        </div>
+
+        <div style={{ width:'2px', height:'18px', background:'rgba(255,255,255,0.3)', margin:'18px auto 0' }} />
+
         <p className="story">
           Nuestra primera cita fue en el restaurante Palace Café. En nuestra segunda cita, Braydon me sorprendió invitándome a comer comida hondureña — quería probarla — y eso me mostró que estaba interesado. Y lo demás… es historia.
           <span className="by">— Reli</span>
         </p>
-
-        <div className="faltan">FALTAN</div>
-        <div className="cd">
-          <span>{d}</span><span className="sep">:</span>
-          <span>{h}</span><span className="sep">:</span>
-          <span>{m}</span><span className="sep">:</span>
-          <span>{s}</span>
-        </div>
-        <div className="cd lbls">
-          <span>Días</span><span>Horas</span><span>Min</span><span>Seg</span>
-        </div>
       </div>
     </section>
   );
