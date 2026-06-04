@@ -484,6 +484,9 @@ section {
   background: rgba(255, 255, 255, 0.5);
   margin-bottom: 8px;
 }
+.intro .datebox .side .l {
+  background: var(--sage);
+}
 .datebox .side small {
   font-size: 12px;
   letter-spacing: 0.2em;

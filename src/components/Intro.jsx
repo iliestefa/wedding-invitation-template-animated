@@ -1,11 +1,15 @@
 export default function Intro() {
   return (
     <section className="intro" data-stagger="true">
-      <div className="mono pf rv">B<span className="bar" />R</div>
+      <div className="mono pf rv" style={{ fontSize: 'clamp(48px, 12vw, 72px)' }}>B<span className="bar" />R</div>
       <div className="casamos rv">¡Nos casamos!</div>
       <div className="intro-names rv">Braydon &amp; Reli</div>
-      <div className="intro-date rv">10 · 10 · 2026</div>
-      <div className="casamos-sub rv">Nuestro feliz para siempre llegó.</div>
+      <div className="casamos-sub rv" style={{ marginTop: '8px' }}>Nuestro feliz para siempre llegó.</div>
+      <div className="datebox rv" style={{ marginTop: '20px' }}>
+        <div className="side"><div className="l" /><small>SÁBADO</small></div>
+        <div className="mid"><div className="mo">OCTUBRE</div><div className="dd gv">10</div></div>
+        <div className="side"><div className="l" /><small>2026</small></div>
+      </div>
       <div className="photo rv">
         <img
           src="https://i.postimg.cc/QxDJQz0N/img1.jpg"

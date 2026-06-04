@@ -70,12 +70,6 @@ export default function GreenSection({ audioRef, playing, setPlaying }) {
           <span className="by">— Reli</span>
         </p>
 
-        <div className="datebox">
-          <div className="side"><div className="l" /><small>SÁBADO</small></div>
-          <div className="mid"><div className="mo">OCTUBRE</div><div className="dd gv">10</div></div>
-          <div className="side"><div className="l" /><small>2026</small></div>
-        </div>
-
         <div className="faltan">FALTAN</div>
         <div className="cd">
           <span>{d}</span><span className="sep">:</span>
