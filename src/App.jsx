@@ -39,8 +39,8 @@ export default function App() {
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
   const vw = typeof window !== 'undefined' ? window.innerWidth  : 390;
 
-  // p: 0→1 durante los primeros 300vh de scroll
-  const p = Math.min(1, scrollY / (vh * 3));
+  // p: 0→1 durante los primeros 75vh de scroll
+  const p = Math.min(1, scrollY / (vh * 0.75));
 
   // Solapa abre en p 0→0.6
   const flapP   = Math.min(1, p / 0.6);
@@ -51,10 +51,9 @@ export default function App() {
   const envW0        = Math.min(vw * 0.88, 520);
   const envH0        = envW0 * (280 / 420);
   const centerOffset = vh / 2 - envH0 / 2;
-  // Fase 1 (0→300vh): sube al centro
   const envTYpx1 = -(1 - p) * centerOffset;
-  // Fase 2 (300vh→): sigue bajando fuera de pantalla
-  const extraScroll = Math.max(0, scrollY - vh * 3);
+  // Pausa 75vh→150vh, luego baja fuera de pantalla
+  const extraScroll = Math.max(0, scrollY - vh * 1.5);
   const envTYpx  = envTYpx1 + extraScroll * 0.25;
   const envRadius    = Math.round(4 * (1 - p));
   const envWidth     = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
@@ -67,7 +66,7 @@ export default function App() {
       </audio>
 
       {/* Fondo oscuro — solo visible mientras el contenido no ha subido a taparlo */}
-      {scrollY < vh * 4 && (
+      {scrollY < vh * 2 && (
         <div className="cover-bg-dark" style={{ position: 'fixed', inset: 0, zIndex: 1 }} />
       )}
 
@@ -175,8 +174,8 @@ export default function App() {
         <span>Desliza para abrir</span>
       </div>
 
-      {/* Spacer de 400vh = sobre completamente abajo mucho antes de que salga el contenido */}
-      <div style={{ height: '400vh' }} />
+      {/* Spacer: 75vh animación + pausa corta = 170vh */}
+      <div style={{ height: '170vh' }} />
 
       {/* Contenido — z:3, entre los azules (2) y los rojos (4) */}
       <div className="invite-content" style={{ position:'relative', zIndex:3 }}>
