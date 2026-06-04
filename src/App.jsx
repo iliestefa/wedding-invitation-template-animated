@@ -190,8 +190,8 @@ export default function App() {
 
       {/* Contenido — z:3, entre los azules (2) y los rojos (4) */}
       <div className="invite-content" style={{ position:'relative', zIndex:3 }}>
-        <Intro />
-        <GreenSection audioRef={audioRef} playing={playing} setPlaying={setPlaying} />
+        <Intro audioRef={audioRef} playing={playing} setPlaying={setPlaying} />
+        <GreenSection />
         <EventSection />
         <Itinerary />
         <GoodToKnow />
