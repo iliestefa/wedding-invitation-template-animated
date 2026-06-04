@@ -23,7 +23,14 @@ export default function GoodToKnow() {
       content: (
         <>
           <p>{t.giftsContent}</p>
-          <div className="qr">{t.giftsQr.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br/>}</span>)}</div>
+          <div className="qr-wrap">
+            <a href="https://enroll.zellepay.com/qr-codes?data=ewogICJ0b2tlbiIgOiAiNTA0Mjk2NDYyOSIsCiAgImFjdGlvbiIgOiAicGF5bWVudCIsCiAgIm5hbWUiIDogIlJFTEkiCn0=" target="_blank" rel="noopener noreferrer" className="qr-link">
+              <img src="/qr.jpg" alt="QR Zelle" className="qr-img" />
+            </a>
+            <a href="https://enroll.zellepay.com/qr-codes?data=ewogICJ0b2tlbiIgOiAiNTA0Mjk2NDYyOSIsCiAgImFjdGlvbiIgOiAicGF5bWVudCIsCiAgIm5hbWUiIDogIlJFTEkiCn0=" target="_blank" rel="noopener noreferrer" className="qr-goto">
+              Ir a página
+            </a>
+          </div>
         </>
       ),
     },
