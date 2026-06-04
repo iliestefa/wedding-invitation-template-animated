@@ -102,8 +102,7 @@ export default function App() {
         />
       )}
 
-      {
-        <>
+      {(!isDesk || deskOpenP < 1) && <>
           {/* ── CAPA AZUL z:2 — solapa + pliegue superior (quedan DETRÁS del contenido) ── */}
           <div
             className="env-box"
@@ -258,8 +257,7 @@ export default function App() {
               </g>
             </svg>
           </div>
-        </>
-      }
+      </>}
 
       {/* Hint */}
       <div
