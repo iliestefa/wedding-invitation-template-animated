@@ -3,7 +3,6 @@ import { useState } from 'react';
 const ITEMS = [
   {
     title: 'Vestimenta',
-    open: true,
     content: (
       <>
         <p><strong>Mujeres:</strong> evitar vestidos blancos, beige o tonos similares al blanco. Tampoco negro.</p>
@@ -39,34 +38,45 @@ const ITEMS = [
   },
 ];
 
-function AccItem({ title, content, defaultOpen }) {
-  const [open, setOpen] = useState(defaultOpen || false);
-
-  return (
-    <div className={`acc-item rv${open ? ' open' : ''}`}>
-      <button className="acc-btn" onClick={() => setOpen(o => !o)}>
-        {title}
-        <svg className="ico chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M6 9l6 6 6-6" />
-        </svg>
-      </button>
-      <div className="acc-body" style={{ maxHeight: open ? '400px' : '0' }}>
-        <div className="inner">{content}</div>
-      </div>
-    </div>
-  );
-}
-
 export default function GoodToKnow() {
+  const [openIdx, setOpenIdx] = useState(null);
+
   return (
     <section className="gtk" data-stagger="true">
       <div className="gtk-head rv">
-        <h2 className="pf">Información útil</h2>
+        <h2 className="pf">Información</h2>
       </div>
       <div className="acc">
-        {ITEMS.map((item, i) => (
-          <AccItem key={i} title={item.title} content={item.content} defaultOpen={item.open} />
-        ))}
+        {ITEMS.map((item, i) => {
+          const isOpen = openIdx === i;
+          return (
+            <div key={i} className={`acc-item${isOpen ? ' open' : ''}`}>
+              <button
+                className="acc-btn"
+                onClick={() => setOpenIdx(isOpen ? null : i)}
+              >
+                {item.title}
+                <svg
+                  className="ico chev"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div
+                className="acc-body"
+                style={{ maxHeight: isOpen ? '500px' : '0', overflow: 'hidden', transition: 'max-height 0.5s cubic-bezier(0.4,0,0.2,1)' }}
+              >
+                <div className="inner">{item.content}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

@@ -977,6 +977,13 @@ section {
 }
 .acc-body .inner {
   padding: 0 0 20px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+}
+.acc-item.open .acc-body .inner {
+  opacity: 1;
+  transform: translateY(0);
 }
 .acc-body p {
   margin-bottom: 8px;
