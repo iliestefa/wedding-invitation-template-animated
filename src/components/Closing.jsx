@@ -1,4 +1,8 @@
+import { useT } from '../i18n';
+
 export default function Closing() {
+  const t = useT();
+
   return (
     <section className="closing" data-stagger="true">
       <div className="closing-hero rv">
@@ -9,8 +13,8 @@ export default function Closing() {
         />
         <div className="closing-overlay">
           <div className="closing-mono pf">B<span className="bar" />R</div>
-          <p className="closing-verse gv">"El que no ama no conoce a Dios,<br/>porque Dios es amor."</p>
-          <div className="closing-ref">1 Juan 4:8</div>
+          <p className="closing-verse gv">{t.verse}</p>
+          <div className="closing-ref">{t.verseRef}</div>
           <div className="closing-deco"><span /><span /><span /></div>
           <div className="closing-date">10 · 10 · 2026</div>
         </div>

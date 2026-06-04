@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useT } from '../i18n';
 
 function useCountdown(targetDate) {
   const [time, setTime] = useState({ d: '–', h: '–', m: '–', s: '–' });
@@ -25,27 +26,27 @@ function useCountdown(targetDate) {
 
 export default function GreenSection() {
   const { d, h, m, s } = useCountdown('2026-10-10T17:30:00-05:00');
+  const t = useT();
 
   return (
     <section className="green">
       <div className="rv">
-
-        <div className="faltan">FALTAN</div>
+        <div className="faltan">{t.countdown}</div>
         <div className="cd-wrap">
-          <div className="cd-unit"><span className="cd-num">{d}</span><span className="cd-lbl">Días</span></div>
+          <div className="cd-unit"><span className="cd-num">{d}</span><span className="cd-lbl">{t.days}</span></div>
           <span className="cd-sep">:</span>
-          <div className="cd-unit"><span className="cd-num">{h}</span><span className="cd-lbl">Horas</span></div>
+          <div className="cd-unit"><span className="cd-num">{h}</span><span className="cd-lbl">{t.hours}</span></div>
           <span className="cd-sep">:</span>
-          <div className="cd-unit"><span className="cd-num">{m}</span><span className="cd-lbl">Min</span></div>
+          <div className="cd-unit"><span className="cd-num">{m}</span><span className="cd-lbl">{t.min}</span></div>
           <span className="cd-sep">:</span>
-          <div className="cd-unit"><span className="cd-num">{s}</span><span className="cd-lbl">Seg</span></div>
+          <div className="cd-unit"><span className="cd-num">{s}</span><span className="cd-lbl">{t.seg}</span></div>
         </div>
 
         <div style={{ width:'2px', height:'18px', background:'rgba(255,255,255,0.3)', margin:'18px auto 0' }} />
 
         <p className="story">
-          Nuestra primera cita fue en el restaurante Palace Café. En nuestra segunda cita, Braydon me sorprendió invitándome a comer comida hondureña — quería probarla — y eso me mostró que estaba interesado. Y lo demás… es historia.
-          <span className="by">— Reli</span>
+          {t.story}
+          <span className="by">{t.storyBy}</span>
         </p>
       </div>
     </section>

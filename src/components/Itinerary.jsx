@@ -1,4 +1,6 @@
-const icons = {
+import { useT } from '../i18n';
+
+const iconMap = {
   rings:  <i className="fa-solid fa-church"            style={{ fontSize:'20px', color:'var(--sage)' }} />,
   cheers: <i className="fa-solid fa-champagne-glasses" style={{ fontSize:'20px', color:'var(--sage)' }} />,
   music:  <i className="fa-solid fa-music"             style={{ fontSize:'20px', color:'var(--sage)' }} />,
@@ -10,62 +12,62 @@ const icons = {
   ),
 };
 
-const items = [
-  { time: '5:30 PM', name: 'Ceremonia', icon: 'rings' },
-  { time: '6:30 PM', name: 'Cóctel y fotos', icon: 'cheers' },
-  { time: '7:15 PM', name: 'Primer baile', icon: 'music' },
-  { time: '7:30 PM', name: 'Cena', icon: 'dinner' },
-  { time: '8:30 – 11:30 PM', name: 'Fiesta', icon: 'party' },
-];
-
-const ItiList = () => (
-  <div className="iti-list">
-    {items.map((item, i) => {
-      const isLeft = i % 2 === 0;
-      return (
-        <div className={`iti-item rv ${isLeft ? 'iti-left' : 'iti-right'}`} key={i}>
-          <div className="iti-txt">
-            {isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
-          </div>
-          <div className="iti-center">
-            {i < items.length - 1 && <div className="iti-line" />}
-            <div className="iti-ic">{icons[item.icon]}</div>
-          </div>
-          <div className="iti-txt">
-            {!isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
-          </div>
-        </div>
-      );
-    })}
-  </div>
-);
-
-const ItiPhoto = () => (
-  <div className="photo rv" style={{ aspectRatio: '4/5', marginTop: '54px' }}>
-    <img
-      src="https://i.postimg.cc/QxDJQz0N/img1.jpg"
-      alt="Braydon y Reli"
-      onError={e => { e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)'; e.target.remove(); }}
-    />
-  </div>
-);
-
 export default function Itinerary() {
+  const t = useT();
+
+  const items = [
+    { time: '5:30 PM',          name: t.ceremony,   icon: 'rings'  },
+    { time: '6:30 PM',          name: t.cocktail,   icon: 'cheers' },
+    { time: '7:15 PM',          name: t.firstDance, icon: 'music'  },
+    { time: '7:30 PM',          name: t.dinner,     icon: 'dinner' },
+    { time: '8:30 – 11:30 PM',  name: t.party,      icon: 'party'  },
+  ];
+
+  const itiList = (
+    <div className="iti-list">
+      {items.map((item, i) => {
+        const isLeft = i % 2 === 0;
+        return (
+          <div className={`iti-item rv ${isLeft ? 'iti-left' : 'iti-right'}`} key={i}>
+            <div className="iti-txt">
+              {isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
+            </div>
+            <div className="iti-center">
+              {i < items.length - 1 && <div className="iti-line" />}
+              <div className="iti-ic">{iconMap[item.icon]}</div>
+            </div>
+            <div className="iti-txt">
+              {!isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const itiPhoto = (
+    <div className="photo rv" style={{ aspectRatio: '4/5', marginTop: '54px' }}>
+      <img
+        src="https://i.postimg.cc/QxDJQz0N/img1.jpg"
+        alt="Braydon y Reli"
+        onError={e => { e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)'; e.target.remove(); }}
+      />
+    </div>
+  );
+
   return (
     <section className="iti" data-stagger="true">
-      {/* Mobile */}
       <div className="iti-mobile">
-        <h2 className="rv">Itinerario</h2>
-        <ItiList />
-        <ItiPhoto />
+        <h2 className="rv">{t.itinerary}</h2>
+        {itiList}
+        {itiPhoto}
       </div>
-      {/* Desktop: 2 columnas */}
       <div className="iti-desk">
         <div className="iti-desk-list">
-          <h2 className="rv">Itinerario</h2>
-          <ItiList />
+          <h2 className="rv">{t.itinerary}</h2>
+          {itiList}
         </div>
-        <div className="iti-desk-photo"><ItiPhoto /></div>
+        <div className="iti-desk-photo">{itiPhoto}</div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
+import { useT } from "./i18n";
 
 import Intro from "./components/Intro";
 import GreenSection from "./components/GreenSection";
@@ -10,6 +11,7 @@ import Rsvp from "./components/Rsvp";
 import Closing from "./components/Closing";
 
 export default function App() {
+  const t = useT();
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -282,7 +284,7 @@ export default function App() {
         >
           <path d="M19 9l-7 7-7-7" />
         </svg>
-        <span>Desliza para abrir</span>
+        <span>{t.scrollHint}</span>
       </div>
 
       {/* Spacer: corto en desktop (contenido aparece dentro del sobre), largo en mobile */}
@@ -330,7 +332,7 @@ export default function App() {
             fontFamily: "Cormorant Garamond, serif",
           }}
         >
-          Diseñado con amor · <span style={{ textDecoration:'underline', textUnderlineOffset:'3px' }}>Wedya</span>
+          {t.madeWith}<span style={{ textDecoration:'underline', textUnderlineOffset:'3px' }}>Wedya</span>
         </a>
       </div>
     </>
