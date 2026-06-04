@@ -971,7 +971,7 @@ section {
 .acc-body {
   overflow: hidden;
   transition: max-height 0.45s ease;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--ink-soft);
   line-height: 1.7;
 }

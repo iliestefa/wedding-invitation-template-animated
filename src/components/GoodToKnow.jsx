@@ -5,9 +5,9 @@ const ITEMS = [
     title: 'Vestimenta',
     content: (
       <>
-        <p><strong>Mujeres:</strong> evitar vestidos blancos, beige o tonos similares al blanco. Tampoco negro.</p>
-        <p><strong>Hombres:</strong> sin blazers o sacos blancos o beige (la camisa blanca sí está permitida).</p>
-        <p><strong>Todos:</strong> evitar prendas estampadas.</p>
+        <p><strong>Mujeres:</strong> No usar vestidos blancos, beige o tonos similares al blanco. Tampoco color negro.</p>
+        <p><strong>Hombres:</strong> No usar blazers o sacos blancos o beige. La camisa blanca sí está permitida.</p>
+        <p><strong>Todos los invitados:</strong> Evitar prendas estampadas.</p>
       </>
     ),
   },
