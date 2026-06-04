@@ -49,19 +49,26 @@ export default function Itinerary() {
     <section className="iti" data-stagger="true">
       <h2 className="rv">Itinerario</h2>
       <div className="iti-list">
-        {items.map((item, i) => (
-          <div className="iti-item rv" key={i}>
-            <div className="iti-ic">{icons[item.icon]}</div>
-            <div className="iti-connector">
-              <div className="iti-dot" />
-              {i < items.length - 1 && <div className="iti-line" />}
+        {items.map((item, i) => {
+          const isLeft = i % 2 === 0;
+          return (
+            <div className={`iti-item rv ${isLeft ? 'iti-left' : 'iti-right'}`} key={i}>
+              {/* Texto izquierda */}
+              <div className="iti-txt">
+                {isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
+              </div>
+              {/* Icono central con línea */}
+              <div className="iti-center">
+                {i < items.length - 1 && <div className="iti-line" />}
+                <div className="iti-ic">{icons[item.icon]}</div>
+              </div>
+              {/* Texto derecha */}
+              <div className="iti-txt">
+                {!isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
+              </div>
             </div>
-            <div className="iti-txt">
-              <div className="iti-time">{item.time}</div>
-              <div className="iti-name">{item.name}</div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className="photo rv" style={{ marginTop: '54px', aspectRatio: '4/5' }}>
         <img
