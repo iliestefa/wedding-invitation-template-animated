@@ -251,8 +251,11 @@ section {
    INTRO
    ══════════════════════════════════════ */
 .intro {
-  padding: 72px 32px 64px;
+  padding: 56px 32px 64px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -282,7 +285,7 @@ section {
 
 .casamos {
   margin-top: 24px;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.44em;
   font-weight: 600;
   text-transform: uppercase;
@@ -299,7 +302,7 @@ section {
 .intro-names {
   margin-top: 16px;
   font-family: "Great Vibes", cursive;
-  font-size: clamp(38px, 10vw, 56px);
+  font-size: clamp(38px, 12vw, 56px);
   color: var(--sage-deep);
   line-height: 1.1;
 }
@@ -353,9 +356,7 @@ section {
    ══════════════════════════════════════ */
 .now-playing {
   margin-top: 20px;
-  width: clamp(220px, 72vw, 310px);
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
   border-radius: 26px;
   overflow: hidden;
   box-shadow:
@@ -420,9 +421,19 @@ section {
 
 .np-fill {
   height: 100%;
-  width: 35%;
+  width: 5%;
   background: var(--sage);
   border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.np-fill.playing {
+  animation: np-progress 210s linear forwards;
+}
+
+@keyframes np-progress {
+  from { width: 5%; }
+  to   { width: 100%; }
 }
 
 .np-buttons {
@@ -441,13 +452,13 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  transition: opacity 0.2s;
+  padding: 8px;
+  border-radius: 50%;
+  transition: transform 0.15s ease, opacity 0.2s;
 }
 
-.np-btn:hover {
-  opacity: 0.6;
-}
+.np-btn:hover { opacity: 0.7; }
+.np-btn:active { transform: scale(0.88); }
 
 /* ══════════════════════════════════════
    SECCIÓN VERDE
@@ -579,6 +590,8 @@ section {
 .datebox .side {
   flex: 1;
   text-align: center;
+  min-width: 70%;
+  width: 0;
 }
 .datebox .side .l {
   height: 1px;
@@ -589,19 +602,21 @@ section {
   background: var(--sage);
 }
 .datebox .side small {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.2em;
 }
 .datebox .mid .mo {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.3em;
   font-weight: 600;
 }
 .datebox .mid .dd {
   font-family: "Great Vibes", cursive;
+  font-style: normal;
   font-size: clamp(60px, 17vw, 76px);
   line-height: 0.9;
   margin-top: 2px;
+  color: var(--sage-deep);
 }
 
 .faltan {

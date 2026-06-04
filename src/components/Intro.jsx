@@ -19,14 +19,14 @@ export default function Intro({ audioRef, playing, setPlaying }) {
       <div className="datebox rv" style={{ marginTop: '20px' }}>
         <div className="side"><div className="l" /><small>SÁBADO</small></div>
         <div className="mid"><div className="mo">OCTUBRE</div><div className="dd gv">10</div></div>
-        <div className="side"><div className="l" /><small>2026</small></div>
+        <div className="side"><div className="l" /><small style={{ fontSize: '16px' }}>2026</small></div>
       </div>
 
       {/* Foto + player Now Playing */}
       <div className="now-playing rv">
         <div className="np-photo">
           <img
-            src="https://i.postimg.cc/QxDJQz0N/img1.jpg"
+            src="https://i.postimg.cc/Yq7z6P8Z/img4.jpg"
             alt="Braydon y Reli"
             onError={e => { e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)'; e.target.remove(); }}
           />
@@ -37,7 +37,7 @@ export default function Intro({ audioRef, playing, setPlaying }) {
             <span className="np-artist">Nuestra canción — Those Eyes</span>
           </div>
           <div className="np-progress">
-            <div className="np-track"><div className="np-fill" /></div>
+            <div className="np-track"><div className={`np-fill${playing ? ' playing' : ''}`} /></div>
           </div>
           <div className="np-buttons">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style={{opacity:0.4}}><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>

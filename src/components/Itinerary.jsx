@@ -65,7 +65,7 @@ export default function Itinerary() {
       </div>
       <div className="photo rv" style={{ marginTop: '54px', aspectRatio: '4/5' }}>
         <img
-          src="https://i.postimg.cc/QxDJQz0D/img3.jpg"
+          src="https://i.postimg.cc/QxDJQz0N/img1.jpg"
           alt="Braydon y Reli"
           onError={e => { e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)'; e.target.remove(); }}
         />
