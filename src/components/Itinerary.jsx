@@ -1,4 +1,3 @@
-/* Iconos inline de Heroicons (MIT) — no SVG caseros */
 const icons = {
   rings:  <i className="fa-solid fa-church"            style={{ fontSize:'20px', color:'var(--sage)' }} />,
   cheers: <i className="fa-solid fa-champagne-glasses" style={{ fontSize:'20px', color:'var(--sage)' }} />,
@@ -19,38 +18,54 @@ const items = [
   { time: '8:30 – 11:30 PM', name: 'Fiesta', icon: 'party' },
 ];
 
+const ItiList = () => (
+  <div className="iti-list">
+    {items.map((item, i) => {
+      const isLeft = i % 2 === 0;
+      return (
+        <div className={`iti-item rv ${isLeft ? 'iti-left' : 'iti-right'}`} key={i}>
+          <div className="iti-txt">
+            {isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
+          </div>
+          <div className="iti-center">
+            {i < items.length - 1 && <div className="iti-line" />}
+            <div className="iti-ic">{icons[item.icon]}</div>
+          </div>
+          <div className="iti-txt">
+            {!isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+);
+
+const ItiPhoto = () => (
+  <div className="photo rv" style={{ aspectRatio: '4/5', marginTop: '54px' }}>
+    <img
+      src="https://i.postimg.cc/QxDJQz0N/img1.jpg"
+      alt="Braydon y Reli"
+      onError={e => { e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)'; e.target.remove(); }}
+    />
+  </div>
+);
+
 export default function Itinerary() {
   return (
     <section className="iti" data-stagger="true">
-      <h2 className="rv">Itinerario</h2>
-      <div className="iti-list">
-        {items.map((item, i) => {
-          const isLeft = i % 2 === 0;
-          return (
-            <div className={`iti-item rv ${isLeft ? 'iti-left' : 'iti-right'}`} key={i}>
-              {/* Texto izquierda */}
-              <div className="iti-txt">
-                {isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
-              </div>
-              {/* Icono central con línea */}
-              <div className="iti-center">
-                {i < items.length - 1 && <div className="iti-line" />}
-                <div className="iti-ic">{icons[item.icon]}</div>
-              </div>
-              {/* Texto derecha */}
-              <div className="iti-txt">
-                {!isLeft && <><div className="iti-time">{item.time}</div><div className="iti-name">{item.name}</div></>}
-              </div>
-            </div>
-          );
-        })}
+      {/* Mobile */}
+      <div className="iti-mobile">
+        <h2 className="rv">Itinerario</h2>
+        <ItiList />
+        <ItiPhoto />
       </div>
-      <div className="photo rv" style={{ marginTop: '54px', aspectRatio: '4/5' }}>
-        <img
-          src="https://i.postimg.cc/QxDJQz0N/img1.jpg"
-          alt="Braydon y Reli"
-          onError={e => { e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)'; e.target.remove(); }}
-        />
+      {/* Desktop: 2 columnas */}
+      <div className="iti-desk">
+        <div className="iti-desk-list">
+          <h2 className="rv">Itinerario</h2>
+          <ItiList />
+        </div>
+        <div className="iti-desk-photo"><ItiPhoto /></div>
       </div>
     </section>
   );
