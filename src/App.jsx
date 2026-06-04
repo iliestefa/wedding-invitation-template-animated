@@ -58,20 +58,35 @@ export default function App() {
   const flapP = Math.min(1, p / 0.6);
   const flapDeg = flapP * -180;
 
-  // Sobre: bottom:0 fijo, sube para quedar centrado al inicio
+  const isDesk = vw >= 768;
+  // Desktop fase 1 (p 0→0.5): baja al fondo
+  // Desktop fase 2 (p 0.5→1): crece y abre
+  const deskDropP = isDesk ? Math.min(1, p / 0.5) : 0;
+  const deskOpenP = isDesk ? Math.min(1, Math.max(0, (p - 0.5) / 0.5)) : 0;
+  const foldP     = isDesk ? deskOpenP : 0;
+
   const envW0 = Math.min(vw * 0.88, 520);
   const envH0 = envW0 * (280 / 420);
-  const centerOffset = vh / 2 - envH0 / 2;
-  const envTYpx1 = -(1 - p) * centerOffset;
-  // Pausa 75vh→150vh, luego baja fuera de pantalla
-  const extraScroll = Math.max(0, scrollY - vh * 1.5);
-  // Caída inicial: arriba de pantalla → centro (antes del primer scroll)
-  const dropOffset = dropped ? 0 : -(vh + envH0);
-  const envTYpx = envTYpx1 + extraScroll * 0.25 + dropOffset;
-  // Rotación de hoja cayendo: 12° → 0° durante la caída
+
+  let envTYpx, envWidth, envRadius;
+  if (isDesk) {
+    // Fase 1: baja del centro al fondo con deskDropP
+    const centerOffset = vh / 2 - envH0 / 2;
+    const dropOffset = dropped ? 0 : -(vh + envH0);
+    envTYpx = -(1 - deskDropP) * centerOffset + dropOffset;
+    envWidth  = `min(calc(${envW0}px + ${p} * (100vw - ${envW0}px)), 100vw)`;
+    envRadius = Math.round(4 * (1 - p));
+  } else {
+    const centerOffset = vh / 2 - envH0 / 2;
+    const envTYpx1    = -(1 - p) * centerOffset;
+    const extraScroll = Math.max(0, scrollY - vh * 1.5);
+    const dropOffset  = dropped ? 0 : -(vh + envH0);
+    envTYpx   = envTYpx1 + extraScroll * 0.25 + dropOffset;
+    envWidth  = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
+    envRadius = Math.round(4 * (1 - p));
+  }
+
   const dropRot = dropped ? 0 : 12;
-  const envRadius = Math.round(4 * (1 - p));
-  const envWidth = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
 
   return (
     <>
@@ -107,7 +122,7 @@ export default function App() {
                   : "none",
             }}
           >
-            {/* Fondo blanco del sobre */}
+            {/* Fondo blanco del sobre — desaparece al abrirse en desktop */}
             <div
               style={{
                 position: "absolute",
@@ -137,26 +152,10 @@ export default function App() {
                   <stop offset="100%" stopColor="#ede7d6" />
                 </linearGradient>
               </defs>
-              {/* Triángulo superior — de esquina a esquina hacia el centro */}
+              {/* Triángulo superior */}
               <path d="M0 0 L420 0 L210 168 Z" fill="url(#gt)" />
-              <line
-                x1="0"
-                y1="0"
-                x2="210"
-                y2="168"
-                stroke="#b8b09c"
-                strokeWidth="0.7"
-                opacity="0.5"
-              />
-              <line
-                x1="420"
-                y1="0"
-                x2="210"
-                y2="168"
-                stroke="#b8b09c"
-                strokeWidth="0.7"
-                opacity="0.5"
-              />
+              <line x1="0" y1="0" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5" />
+              <line x1="420" y1="0" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5" />
             </svg>
 
             {/* Solapa animada */}
@@ -241,68 +240,22 @@ export default function App() {
                 </linearGradient>
               </defs>
               {/* Pliegue lateral izquierdo */}
-              <path d="M0 0 L210 168 L0 280" fill="url(#gl)" />
+              <path d="M0 0 L210 168 L0 280" fill="url(#gl)"
+                style={{ transformOrigin: '0px 140px', transform: `scaleX(${1 - foldP * 0.95})` }} />
               {/* Pliegue lateral derecho */}
-              <path d="M420 0 L210 168 L420 280" fill="url(#gr)" />
+              <path d="M420 0 L210 168 L420 280" fill="url(#gr)"
+                style={{ transformOrigin: '420px 140px', transform: `scaleX(${1 - foldP * 0.95})` }} />
               {/* Pliegue inferior */}
-              <path d="M0 280 L210 168 L420 280" fill="url(#gb)" />
-              <line
-                x1="0"
-                y1="0"
-                x2="210"
-                y2="168"
-                stroke="#b8b09c"
-                strokeWidth="0.7"
-                opacity="0.5"
-              />
-              <line
-                x1="420"
-                y1="0"
-                x2="210"
-                y2="168"
-                stroke="#b8b09c"
-                strokeWidth="0.7"
-                opacity="0.5"
-              />
-              <line
-                x1="0"
-                y1="280"
-                x2="210"
-                y2="168"
-                stroke="#b8b09c"
-                strokeWidth="0.7"
-                opacity="0.5"
-              />
-              <line
-                x1="420"
-                y1="280"
-                x2="210"
-                y2="168"
-                stroke="#b8b09c"
-                strokeWidth="0.7"
-                opacity="0.5"
-              />
-              {/* Sello en la intersección de los pliegues */}
-              <circle cx="210" cy="168" r="42" fill="#6b7550" />
-              <circle
-                cx="210"
-                cy="168"
-                r="36"
-                fill="none"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="1.2"
-              />
-              <text
-                x="210"
-                y="178"
-                textAnchor="middle"
-                fontFamily="'Great Vibes', cursive"
-                fontSize="24"
-                letterSpacing="4"
-                fill="rgba(255,255,255,0.9)"
-              >
-                B&amp;R
-              </text>
+              <path d="M0 280 L210 168 L420 280" fill="url(#gb)"
+                style={{ transformOrigin: '210px 280px', transform: `scaleY(${1 - foldP * 0.95})` }} />
+              {/* Sello — se va con el pliegue inferior */}
+              <g style={{ transformOrigin: '210px 280px', transform: `scaleY(${1 - foldP * 0.95})` }}>
+                <circle cx="210" cy="168" r="42" fill="#6b7550" />
+                <circle cx="210" cy="168" r="36" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2" />
+                <text x="210" y="178" textAnchor="middle"
+                  fontFamily="'Great Vibes', cursive" fontSize="24" letterSpacing="4"
+                  fill="rgba(255,255,255,0.9)">B&amp;R</text>
+              </g>
             </svg>
           </div>
         </>
@@ -334,13 +287,20 @@ export default function App() {
         <span>Desliza para abrir</span>
       </div>
 
-      {/* Spacer: 75vh animación + pausa = 190vh */}
-      <div style={{ height: "195vh" }} />
+      {/* Spacer: corto en desktop (contenido aparece dentro del sobre), largo en mobile */}
+      <div style={{ height: isDesk ? "80vh" : "195vh" }} />
 
       {/* Contenido — z:3, entre los azules (2) y los rojos (4) */}
+      {/* En desktop: fixed dentro del sobre mientras anima, luego flujo normal */}
       <div
         className="invite-content"
-        style={{ position: "relative", zIndex: 3 }}
+        style={{
+          position: "relative",
+          zIndex: 3,
+          opacity: isDesk ? (deskDropP < 1 ? 0 : 1) : 1,
+          transform: isDesk ? `scaleX(${envW0 / vw + (1 - envW0 / vw) * deskOpenP})` : undefined,
+          transformOrigin: isDesk ? "top center" : undefined,
+        }}
       >
         <Intro audioRef={audioRef} playing={playing} setPlaying={setPlaying} />
         <GreenSection />
