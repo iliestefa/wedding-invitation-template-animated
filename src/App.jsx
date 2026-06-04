@@ -13,6 +13,12 @@ export default function App() {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [dropped, setDropped] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setDropped(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     function onScroll() { setScrollY(window.scrollY); }
@@ -45,7 +51,6 @@ export default function App() {
   // Solapa abre en p 0→0.6
   const flapP   = Math.min(1, p / 0.6);
   const flapDeg = flapP * -180;
-  const sealOp  = Math.max(0, 1 - flapP * 2.5);
 
   // Sobre: bottom:0 fijo, sube para quedar centrado al inicio
   const envW0        = Math.min(vw * 0.88, 520);
@@ -54,7 +59,11 @@ export default function App() {
   const envTYpx1 = -(1 - p) * centerOffset;
   // Pausa 75vh→150vh, luego baja fuera de pantalla
   const extraScroll = Math.max(0, scrollY - vh * 1.5);
-  const envTYpx  = envTYpx1 + extraScroll * 0.25;
+  // Caída inicial: arriba de pantalla → centro (antes del primer scroll)
+  const dropOffset = dropped ? 0 : -(vh + envH0);
+  const envTYpx  = envTYpx1 + extraScroll * 0.25 + dropOffset;
+  // Rotación de hoja cayendo: 12° → 0° durante la caída
+  const dropRot = dropped ? 0 : 12;
   const envRadius    = Math.round(4 * (1 - p));
   const envWidth     = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
 
@@ -75,8 +84,9 @@ export default function App() {
 
       {/* ── CAPA AZUL z:2 — solapa + pliegue superior (quedan DETRÁS del contenido) ── */}
       <div className="env-box" style={{ position:'fixed', bottom:0, left:'50%',
-        transform:`translateX(-50%) translateY(${envTYpx}px)`,
-        width:envWidth, borderRadius:`${envRadius}px`, zIndex:2, overflow:'visible' }}>
+        transform:`translateX(-50%) translateY(${envTYpx}px) rotate(${dropRot}deg)`,
+        width:envWidth, borderRadius:`${envRadius}px`, zIndex:2, overflow:'visible',
+        transition: dropped && scrollY === 0 ? 'transform 1.1s cubic-bezier(0.22,1,0.36,1)' : 'none' }}>
 
         {/* Fondo blanco del sobre */}
         <div style={{ position:'absolute', inset:0, background:'#f0ead8',
@@ -108,13 +118,6 @@ export default function App() {
                 </linearGradient>
               </defs>
               <path d="M0 0 L420 0 L210 190 Z" fill="url(#fg)"/>
-              <g style={{ opacity:sealOp }}>
-                <circle cx="210" cy="78" r="30" fill="#6b7550"/>
-                <circle cx="210" cy="78" r="25" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1"/>
-                <text x="210" y="86" textAnchor="middle"
-                  fontFamily="'Great Vibes', cursive" fontSize="22"
-                  fill="rgba(255,255,255,0.88)">B&amp;R</text>
-              </g>
             </svg>
             <svg className="env-flap-svg" viewBox="0 0 420 200"
               style={{ backfaceVisibility:'hidden', transform:'rotateY(180deg)' }}>
@@ -127,8 +130,9 @@ export default function App() {
 
       {/* ── CAPA ROJA z:4 — pliegues laterales e inferior (van ENCIMA del contenido) ── */}
       <div className="env-box" style={{ position:'fixed', bottom:0, left:'50%',
-        transform:`translateX(-50%) translateY(${envTYpx}px)`,
-        width:envWidth, borderRadius:`${envRadius}px`, zIndex:4, pointerEvents:'none' }}>
+        transform:`translateX(-50%) translateY(${envTYpx}px) rotate(${dropRot}deg)`,
+        width:envWidth, borderRadius:`${envRadius}px`, zIndex:4, pointerEvents:'none',
+        transition: dropped && scrollY === 0 ? 'transform 1.1s cubic-bezier(0.22,1,0.36,1)' : 'none' }}>
         <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%' }}
           viewBox="0 0 420 280" preserveAspectRatio="none">
           <defs>
@@ -152,6 +156,13 @@ export default function App() {
           <line x1="420" y1="0"   x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
           <line x1="0"   y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
           <line x1="420" y1="280" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5"/>
+          {/* Sello en la intersección de los pliegues */}
+          <circle cx="210" cy="168" r="42" fill="#6b7550"/>
+          <circle cx="210" cy="168" r="36" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2"/>
+          <text x="210" y="178" textAnchor="middle"
+            fontFamily="'Great Vibes', cursive" fontSize="24"
+            letterSpacing="4"
+            fill="rgba(255,255,255,0.9)">B&amp;R</text>
         </svg>
       </div>
 
@@ -174,8 +185,8 @@ export default function App() {
         <span>Desliza para abrir</span>
       </div>
 
-      {/* Spacer: 75vh animación + pausa corta = 170vh */}
-      <div style={{ height: '170vh' }} />
+      {/* Spacer: 75vh animación + pausa = 190vh */}
+      <div style={{ height: '195vh' }} />
 
       {/* Contenido — z:3, entre los azules (2) y los rojos (4) */}
       <div className="invite-content" style={{ position:'relative', zIndex:3 }}>
