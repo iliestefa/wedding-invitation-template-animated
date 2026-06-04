@@ -71,7 +71,7 @@ export default function App() {
   return (
     <>
       <audio ref={audioRef} loop preload="none">
-        <source src="" type="audio/mpeg" />
+        <source src="/music.mp3" type="audio/mpeg" />
       </audio>
 
       {/* Fondo oscuro — solo visible mientras el contenido no ha subido a taparlo */}

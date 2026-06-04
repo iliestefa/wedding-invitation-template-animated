@@ -3,6 +3,8 @@ export default function Intro() {
     <section className="intro" data-stagger="true">
       <div className="mono pf rv">B<span className="bar" />R</div>
       <div className="casamos rv">¡Nos casamos!</div>
+      <div className="intro-names rv">Braydon &amp; Reli</div>
+      <div className="intro-date rv">10 · 10 · 2026</div>
       <div className="casamos-sub rv">Nuestro feliz para siempre llegó.</div>
       <div className="photo rv">
         <img
