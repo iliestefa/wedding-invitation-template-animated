@@ -32,7 +32,7 @@ export const translations = {
     dressCode: 'Vestimenta',
     dressCodeContent: [
       { label: 'Mujeres:', text: 'No usar vestidos blancos, beige o tonos similares al blanco. Tampoco color negro.' },
-      { label: 'Hombres:', text: 'No usar blazers o sacos blancos o beige. La camisa blanca sí está permitida.' },
+      { label: 'Hombres:', text: 'Les pedimos evitar blazers o sacos blancos y beige. Pueden usar camisa blanca sin problema, siempre que el blazer o saco sea de un color diferente.' },
       { label: 'Todos los invitados:', text: 'Evitar prendas estampadas.' },
     ],
     parking: 'Estacionamiento',
@@ -92,7 +92,7 @@ export const translations = {
     dressCode: 'Dress code',
     dressCodeContent: [
       { label: 'Women:', text: 'Please avoid white, beige or similar shades. No black either.' },
-      { label: 'Men:', text: 'No white or beige blazers or jackets. A white dress shirt is fine.' },
+      { label: 'Men:', text: 'Please avoid white or beige blazers and jackets. A white shirt is perfectly fine, as long as it is paired with a blazer or jacket in a different color.' },
       { label: 'All guests:', text: 'Please avoid printed or patterned clothing.' },
     ],
     parking: 'Parking',
