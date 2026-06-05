@@ -5,7 +5,7 @@ export const translations = {
     saturday: 'SÁBADO',
     october: 'OCTUBRE',
     phrase: 'Nuestro feliz para siempre llegó.',
-    ourSong: 'Nuestra canción — Those Eyes',
+    ourSong: 'Nuestra canción — Young and Beautiful',
     playPause: 'Reproducir / pausar',
     // GreenSection
     countdown: 'FALTAN',
@@ -65,7 +65,7 @@ export const translations = {
     saturday: 'SATURDAY',
     october: 'OCTOBER',
     phrase: 'Our happily ever after has arrived.',
-    ourSong: 'Our song — Those Eyes',
+    ourSong: 'Our song — Young and Beautiful',
     playPause: 'Play / pause',
     // GreenSection
     countdown: 'COUNTDOWN',
