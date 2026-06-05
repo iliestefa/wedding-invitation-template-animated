@@ -110,7 +110,7 @@ export const translations = {
     rsvpTitle: 'RSVP',
     rsvpSubtitle: 'Will you join us?',
     rsvpText: 'Please confirm your attendance as soon as possible so we can reserve your spot and finalize the celebration details.',
-    rsvpBtn: 'Confirm via WhatsApp',
+    rsvpBtn: 'Confirm via Text Message',
     // Closing
     verse: '"Whoever does not love does not know God, because God is love."',
     verseRef: '1 John 4:8',
