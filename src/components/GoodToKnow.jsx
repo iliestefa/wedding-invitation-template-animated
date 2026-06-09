@@ -16,25 +16,10 @@ export default function GoodToKnow() {
         </>
       ),
     },
-    { title: t.parking,     content: <p>{t.parkingContent}</p> },
-    { title: t.children,    content: <p>{t.childrenContent}</p> },
     {
       title: t.gifts,
-      content: (
-        <>
-          <p>{t.giftsContent}</p>
-          <div className="qr-wrap">
-            <a href="https://enroll.zellepay.com/qr-codes?data=ewogICJ0b2tlbiIgOiAiNTA0Mjk2NDYyOSIsCiAgImFjdGlvbiIgOiAicGF5bWVudCIsCiAgIm5hbWUiIDogIlJFTEkiCn0=" target="_blank" rel="noopener noreferrer" className="qr-link">
-              <img src="/qr.jpg" alt="QR Zelle" className="qr-img" />
-            </a>
-            <a href="https://enroll.zellepay.com/qr-codes?data=ewogICJ0b2tlbiIgOiAiNTA0Mjk2NDYyOSIsCiAgImFjdGlvbiIgOiAicGF5bWVudCIsCiAgIm5hbWUiIDogIlJFTEkiCn0=" target="_blank" rel="noopener noreferrer" className="qr-goto">
-              Ir a página
-            </a>
-          </div>
-        </>
-      ),
+      content: <p>{t.giftsContent}</p>,
     },
-    { title: t.arrival,     content: <p>{t.arrivalContent}</p> },
     { title: t.photography, content: <p>{t.photographyContent}</p> },
   ];
 
@@ -64,8 +49,8 @@ export default function GoodToKnow() {
         {ITEMS.map(renderItem)}
       </div>
       <div className="gtk-desk">
-        <div className="acc">{ITEMS.slice(0, 3).map(renderItem)}</div>
-        <div className="acc">{ITEMS.slice(3).map((item, i) => renderItem(item, i + 3))}</div>
+        <div className="acc">{ITEMS.slice(0, 2).map(renderItem)}</div>
+        <div className="acc">{ITEMS.slice(2).map((item, i) => renderItem(item, i + 2))}</div>
       </div>
     </section>
   );
