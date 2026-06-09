@@ -45,7 +45,6 @@ export default function Intro({ audioRef, playing, setPlaying }) {
     <div className="now-playing rv">
       <div className="np-photo">
         <img
-          //src="https://i.postimg.cc/Yq7z6P8Z/img4.jpg"
           src="https://i.postimg.cc/8CMKfCFX/image.webp"
           alt="Juan y Juana"
           onError={(e) => {
