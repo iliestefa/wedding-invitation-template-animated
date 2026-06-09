@@ -42,26 +42,20 @@ export const translations = {
     dressCodeContent: [
       {
         label: "Mujeres:",
-        text: "No usar vestidos blancos ni negros.",
+        text: "Vestido de cocktail, traje sastre o conjunto elegante. Se recomiendan colores pastel, tonos joya o estampados sutiles. Evitar vestidos blancos, negros o demasiado cortos informales.",
       },
       {
         label: "Hombres:",
-        text: "No usar blazers o sacos blancos.",
+        text: "Traje formal o semi-formal con camisa y corbata (opcional). Se recomiendan colores claros o tonos oscuros. Evitar blazers o sacos blancos, jeans y ropa demasiado casual.",
       },
-      { label: "Todos los invitados:", text: "Evitar prendas con diseño." },
+      {
+        label: "Todos los invitados:",
+        text: "Vestimenta elegante acorde a una boda formal. Evitar prendas con diseños llamativos, ropa deportiva, gorras y chanclas.",
+      },
     ],
-    parking: "Estacionamiento",
-    parkingContent:
-      "Valet Parking (una persona del lugar estaciona tu coche por ti).",
-    children: "Niños",
-    childrenContent:
-      "Los niños no pueden ingresar, es una fiesta para adultos.",
     gifts: "Regalos",
     giftsContent:
-      "Su presencia es nuestro mejor regalo. Si desean tener un detalle con nosotros, pueden utilizar la siguiente opción:",
-    giftsQr: "Código QR\naquí",
-    arrival: "Llegada",
-    arrivalContent: "Te esperamos a las 18:00.",
+      "Su presencia es nuestro mejor regalo. Puedes enviar tus regalos antes, durante y después de la boda. Puedes darnos un detalle a través de nuestra cuenta bancaria: 1234567890.",
     photography: "Fotografía",
     photographyContent:
       "Las fotografías las tomarán profesionales, también les invitamos a subir sus fotos a nuestra galería compartida.",
@@ -122,29 +116,20 @@ export const translations = {
     dressCodeContent: [
       {
         label: "Women:",
-        text: "Please do not wear white or black dresses.",
+        text: "Cocktail dress, pantsuit, or elegant ensemble. Pastel colors, jewel tones, or subtle prints are recommended. Avoid white or black dresses, as well as overly casual or short attire.",
       },
       {
         label: "Men:",
-        text: "Please do not wear white blazers or suit jackets.",
+        text: "Formal or semi-formal suit with shirt and tie (optional). Light or dark tones are recommended. Avoid white blazers or suit jackets, jeans, and overly casual clothing.",
       },
       {
         label: "All guests:",
-        text: "Please avoid patterned clothing.",
+        text: "Elegant attire appropriate for a formal wedding. Avoid loud patterns, sportswear, caps, and flip-flops.",
       },
     ],
-    parking: "Parking",
-    parkingContent: "Valet Parking (an attendant will park your car for you).",
-    children: "Children",
-    childrenContent:
-      "Children are not allowed; this is an adults-only celebration.",
     gifts: "Gifts",
     giftsContent:
-      "Your presence is our greatest gift. If you'd like to give us something, you may use the following option:",
-    giftsQr: "QR Code\nhere",
-    arrival: "Arrival",
-    arrivalContent:
-      "Doors open at 5:00 PM. Please do not arrive before that time.",
+      "Your presence is our greatest gift. You can send gifts before, during, or after the wedding. You may give us a token of your love through our bank account: 1234567890.",
     photography: "Photography",
     photographyContent:
       "Photos will be taken by professionals, but we invite you to upload your photos to our shared gallery too.",
