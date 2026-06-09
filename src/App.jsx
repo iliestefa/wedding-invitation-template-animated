@@ -65,7 +65,7 @@ export default function App() {
   // Desktop fase 2 (p 0.5→1): crece y abre
   const deskDropP = isDesk ? Math.min(1, p / 0.5) : 0;
   const deskOpenP = isDesk ? Math.min(1, Math.max(0, (p - 0.5) / 0.5)) : 0;
-  const foldP     = isDesk ? deskOpenP : 0;
+  const foldP = isDesk ? deskOpenP : 0;
 
   const envW0 = Math.min(vw * 0.88, 520);
   const envH0 = envW0 * (280 / 420);
@@ -76,15 +76,15 @@ export default function App() {
     const centerOffset = vh / 2 - envH0 / 2;
     const dropOffset = dropped ? 0 : -(vh + envH0);
     envTYpx = -(1 - deskDropP) * centerOffset + dropOffset;
-    envWidth  = `min(calc(${envW0}px + ${p} * (100vw - ${envW0}px)), 100vw)`;
+    envWidth = `min(calc(${envW0}px + ${p} * (100vw - ${envW0}px)), 100vw)`;
     envRadius = Math.round(4 * (1 - p));
   } else {
     const centerOffset = vh / 2 - envH0 / 2;
-    const envTYpx1    = -(1 - p) * centerOffset;
+    const envTYpx1 = -(1 - p) * centerOffset;
     const extraScroll = Math.max(0, scrollY - vh * 1.5);
-    const dropOffset  = dropped ? 0 : -(vh + envH0);
-    envTYpx   = envTYpx1 + extraScroll * 0.25 + dropOffset;
-    envWidth  = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
+    const dropOffset = dropped ? 0 : -(vh + envH0);
+    envTYpx = envTYpx1 + extraScroll * 0.25 + dropOffset;
+    envWidth = `min(calc(88vw + ${p * 12}vw), calc(520px + ${p} * (100vw - 520px)))`;
     envRadius = Math.round(4 * (1 - p));
   }
 
@@ -104,7 +104,8 @@ export default function App() {
         />
       )}
 
-      {(!isDesk || deskOpenP < 1) && <>
+      {(!isDesk || deskOpenP < 1) && (
+        <>
           {/* ── CAPA AZUL z:2 — solapa + pliegue superior (quedan DETRÁS del contenido) ── */}
           <div
             className="env-box"
@@ -155,8 +156,24 @@ export default function App() {
               </defs>
               {/* Triángulo superior */}
               <path d="M0 0 L420 0 L210 168 Z" fill="url(#gt)" />
-              <line x1="0" y1="0" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5" />
-              <line x1="420" y1="0" x2="210" y2="168" stroke="#b8b09c" strokeWidth="0.7" opacity="0.5" />
+              <line
+                x1="0"
+                y1="0"
+                x2="210"
+                y2="168"
+                stroke="#b8b09c"
+                strokeWidth="0.7"
+                opacity="0.5"
+              />
+              <line
+                x1="420"
+                y1="0"
+                x2="210"
+                y2="168"
+                stroke="#b8b09c"
+                strokeWidth="0.7"
+                opacity="0.5"
+              />
             </svg>
 
             {/* Solapa animada */}
@@ -241,25 +258,64 @@ export default function App() {
                 </linearGradient>
               </defs>
               {/* Pliegue lateral izquierdo */}
-              <path d="M0 0 L210 168 L0 280" fill="url(#gl)"
-                style={{ transformOrigin: '0px 140px', transform: `scaleX(${1 - foldP * 0.95})` }} />
+              <path
+                d="M0 0 L210 168 L0 280"
+                fill="url(#gl)"
+                style={{
+                  transformOrigin: "0px 140px",
+                  transform: `scaleX(${1 - foldP * 0.95})`,
+                }}
+              />
               {/* Pliegue lateral derecho */}
-              <path d="M420 0 L210 168 L420 280" fill="url(#gr)"
-                style={{ transformOrigin: '420px 140px', transform: `scaleX(${1 - foldP * 0.95})` }} />
+              <path
+                d="M420 0 L210 168 L420 280"
+                fill="url(#gr)"
+                style={{
+                  transformOrigin: "420px 140px",
+                  transform: `scaleX(${1 - foldP * 0.95})`,
+                }}
+              />
               {/* Pliegue inferior */}
-              <path d="M0 280 L210 168 L420 280" fill="url(#gb)"
-                style={{ transformOrigin: '210px 280px', transform: `scaleY(${1 - foldP * 0.95})` }} />
+              <path
+                d="M0 280 L210 168 L420 280"
+                fill="url(#gb)"
+                style={{
+                  transformOrigin: "210px 280px",
+                  transform: `scaleY(${1 - foldP * 0.95})`,
+                }}
+              />
               {/* Sello — se va con el pliegue inferior */}
-              <g style={{ transformOrigin: '210px 280px', transform: `scaleY(${1 - foldP * 0.95})` }}>
+              <g
+                style={{
+                  transformOrigin: "210px 280px",
+                  transform: `scaleY(${1 - foldP * 0.95})`,
+                }}
+              >
                 <circle cx="210" cy="168" r="42" fill="#6b7550" />
-                <circle cx="210" cy="168" r="36" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2" />
-                <text x="210" y="178" textAnchor="middle"
-                  fontFamily="'Great Vibes', cursive" fontSize="24" letterSpacing="4"
-                  fill="rgba(255,255,255,0.9)">B&amp;R</text>
+                <circle
+                  cx="210"
+                  cy="168"
+                  r="36"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.25)"
+                  strokeWidth="1.2"
+                />
+                <text
+                  x="210"
+                  y="178"
+                  textAnchor="middle"
+                  fontFamily="'Great Vibes', cursive"
+                  fontSize="24"
+                  letterSpacing="4"
+                  fill="rgba(255,255,255,0.9)"
+                >
+                  J&amp;J
+                </text>
               </g>
             </svg>
           </div>
-      </>}
+        </>
+      )}
 
       {/* Hint */}
       <div
@@ -298,7 +354,9 @@ export default function App() {
           position: "relative",
           zIndex: 3,
           opacity: isDesk ? (deskDropP < 1 ? 0 : 1) : 1,
-          transform: isDesk ? `scaleX(${envW0 / vw + (1 - envW0 / vw) * deskOpenP})` : undefined,
+          transform: isDesk
+            ? `scaleX(${envW0 / vw + (1 - envW0 / vw) * deskOpenP})`
+            : undefined,
           transformOrigin: isDesk ? "top center" : undefined,
         }}
       >
@@ -332,7 +390,12 @@ export default function App() {
             fontFamily: "Cormorant Garamond, serif",
           }}
         >
-          {t.madeWith}<span style={{ textDecoration:'underline', textUnderlineOffset:'3px' }}>Wedya</span>
+          {t.madeWith}
+          <span
+            style={{ textDecoration: "underline", textUnderlineOffset: "3px" }}
+          >
+            Wedya
+          </span>
         </a>
       </div>
     </>

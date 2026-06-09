@@ -1,13 +1,15 @@
-import { useT, useLang } from '../i18n';
+import { useT, useLang } from "../i18n";
 
 export default function Rsvp() {
   const t = useT();
   const lang = useLang();
 
-  const waUrl = "https://wa.me/15042964629?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Braydon%20y%20Reli";
-  const smsUrl = "sms:+19856872442&body=Hi!%20I%20confirm%20my%20attendance%20to%20Braydon%20%26%20Reli's%20wedding";
+  const waUrl =
+    "https://wa.me/10000000000?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Juan%20y%20Juana";
+  const smsUrl =
+    "sms:+19856872442&body=Hi!%20I%20confirm%20my%20attendance%20to%20Juan%20%26%20Juana's%20wedding";
 
-  const isEn = lang === 'en';
+  const isEn = lang === "en";
   const href = isEn ? smsUrl : waUrl;
 
   return (
@@ -16,15 +18,26 @@ export default function Rsvp() {
         <h3>{t.rsvpTitle}</h3>
         <div className="big pf">{t.rsvpSubtitle}</div>
         <p>{t.rsvpText}</p>
-        <a className="wa" href={href} target={isEn ? '_self' : '_blank'} rel="noopener noreferrer">
+        <a
+          className="wa"
+          href={href}
+          target={isEn ? "_self" : "_blank"}
+          rel="noopener noreferrer"
+        >
           {isEn ? (
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
             </svg>
           ) : (
             <svg viewBox="0 0 24 24" width="18" height="18">
-              <path fill="currentColor" d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/>
-              <path fill="currentColor" d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1112 20z"/>
+              <path
+                fill="currentColor"
+                d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"
+              />
+              <path
+                fill="currentColor"
+                d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1112 20z"
+              />
             </svg>
           )}
           {t.rsvpBtn}
