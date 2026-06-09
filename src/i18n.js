@@ -20,8 +20,9 @@ export const translations = {
       auténtica, el resto, es historia...`,
     storyBy: "— Juana",
     // EventSection
-    venueName: "Jardín de nuestra casa",
-    venueAddr: "29750 Farkas Lane, Albany, LA",
+    venueName: "Ex Convento de San Hipólito",
+    venueAddr:
+      "Av. Hidalgo 107, Centro Histórico, Guerrero, 06300 Ciudad de México, CDMX, México",
     viewLocation: "Ver ubicación",
     ceremony: "Ceremonia",
     reception: "Recepción",
@@ -95,8 +96,9 @@ export const translations = {
       between us. Everything flowed naturally, and the rest is history...`,
     storyBy: "— Juana",
     // EventSection
-    venueName: "Our Home Garden",
-    venueAddr: "29750 Farkas Lane, Albany, LA",
+    venueName: "Ex Convento de San Hipólito",
+    venueAddr:
+      "Av. Hidalgo 107, Centro Histórico, Guerrero, 06300 Mexico City, CDMX, Mexico",
     viewLocation: "View location",
     ceremony: "Ceremony",
     reception: "Reception",
