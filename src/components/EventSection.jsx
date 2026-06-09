@@ -38,7 +38,7 @@ export default function EventSection() {
               style={{ fontSize: "28px", color: "var(--sage)" }}
             />
           </div>
-          <div className="ev-time">5:30 PM</div>
+          <div className="ev-time">18:00</div>
           <div className="ev-type">{t.ceremony}</div>
         </div>
         <div className="ev-divider" />
@@ -49,7 +49,7 @@ export default function EventSection() {
               style={{ fontSize: "28px", color: "var(--sage)" }}
             />
           </div>
-          <div className="ev-time">6:30 PM</div>
+          <div className="ev-time">19:00</div>
           <div className="ev-type">{t.reception}</div>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function EventSection() {
                   style={{ fontSize: "28px", color: "var(--sage)" }}
                 />
               </div>
-              <div className="ev-time">5:30 PM</div>
+              <div className="ev-time">18:00</div>
               <div className="ev-type">{t.ceremony}</div>
             </div>
             <div className="ev-divider" />
@@ -98,7 +98,7 @@ export default function EventSection() {
                   style={{ fontSize: "28px", color: "var(--sage)" }}
                 />
               </div>
-              <div className="ev-time">6:30 PM</div>
+              <div className="ev-time">19:00</div>
               <div className="ev-type">{t.reception}</div>
             </div>
           </div>
