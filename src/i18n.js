@@ -14,9 +14,11 @@ export const translations = {
     hours: "Horas",
     min: "Min",
     seg: "Seg",
-    story:
-      "Nuestra primera cita fue en el restaurante Palace Café. En nuestra segunda cita, Braydon me sorprendió invitándome a comer comida hondureña — quería probarla — y eso me mostró que estaba interesado. Y lo demás… es historia.",
-    storyBy: "— Reli",
+    story: `Conocí a Juan en un viaje a la playa, empezamos a compartir
+      conversaciones, risas y pequeñas experiencias que poco a poco
+      fueron creando algo especial entre nosotros. Todo fluyó de forma
+      auténtica, el resto, es historia...`,
+    storyBy: "— Juana",
     // EventSection
     venueName: "Jardín de nuestra casa",
     venueAddr: "29750 Farkas Lane, Albany, LA",
@@ -88,9 +90,10 @@ export const translations = {
     hours: "Hours",
     min: "Min",
     seg: "Sec",
-    story:
-      "Our first date was at Palace Café restaurant. On our second date, Braydon surprised me by taking me out for Honduran food — he wanted to try it — and that showed me he was interested. And the rest… is history.",
-    storyBy: "— Reli",
+    story: `I met Juan on a trip to the beach. We began sharing conversations, laughter,
+      and small experiences that, little by little, created something special
+      between us. Everything flowed naturally, and the rest is history...`,
+    storyBy: "— Juana",
     // EventSection
     venueName: "Our Home Garden",
     venueAddr: "29750 Farkas Lane, Albany, LA",
