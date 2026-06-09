@@ -38,30 +38,29 @@ export const translations = {
     dressCodeContent: [
       {
         label: "Mujeres:",
-        text: "No usar vestidos blancos, beige o tonos similares al blanco. Tampoco color negro.",
+        text: "No usar vestidos blancos ni negros.",
       },
       {
         label: "Hombres:",
-        text: "Les pedimos evitar blazers o sacos blancos y beige. Pueden usar camisa blanca sin problema, siempre que el blazer o saco sea de un color diferente.",
+        text: "No usar blazers o sacos blancos.",
       },
-      { label: "Todos los invitados:", text: "Evitar prendas estampadas." },
+      { label: "Todos los invitados:", text: "Evitar prendas con diseño." },
     ],
     parking: "Estacionamiento",
     parkingContent:
-      "Parqueo disponible en nuestro jardín (29750 Farkas Lane, Albany, LA).",
+      "Valet Parking (una persona del lugar estaciona tu coche por ti).",
     children: "Niños",
     childrenContent:
-      "Si durante la ceremonia un niño se inquieta o llora, agradecemos acompañarlo momentáneamente fuera del área principal.",
+      "Los niños no pueden ingresar, es una fiesta para adultos.",
     gifts: "Regalos",
     giftsContent:
       "Su presencia es nuestro mejor regalo. Si desean tener un detalle con nosotros, pueden utilizar la siguiente opción:",
     giftsQr: "Código QR\naquí",
     arrival: "Llegada",
-    arrivalContent:
-      "Te esperamos a partir de las 5:00 PM. Por favor, no llegar antes de esa hora.",
+    arrivalContent: "Te esperamos a las 18:00.",
     photography: "Fotografía",
     photographyContent:
-      "Nos encantará que tomen fotos. Si las comparten en redes sociales, les pedimos elegir imágenes favorecedoras para todos.",
+      "Las fotografías las tomarán profesionales, también les invitamos a subir sus fotos a nuestra galería compartida.",
     // RSVP
     rsvpTitle: "Confirmación de asistencia",
     rsvpSubtitle: "¿Nos acompañas?",
@@ -114,23 +113,22 @@ export const translations = {
     dressCodeContent: [
       {
         label: "Women:",
-        text: "Please avoid white, beige or similar shades. No black either.",
+        text: "Please do not wear white or black dresses.",
       },
       {
         label: "Men:",
-        text: "Please avoid white or beige blazers and jackets. A white shirt is perfectly fine, as long as it is paired with a blazer or jacket in a different color.",
+        text: "Please do not wear white blazers or suit jackets.",
       },
       {
         label: "All guests:",
-        text: "Please avoid printed or patterned clothing.",
+        text: "Please avoid patterned clothing.",
       },
     ],
     parking: "Parking",
-    parkingContent:
-      "Parking available at our garden (29750 Farkas Lane, Albany, LA).",
+    parkingContent: "Valet Parking (an attendant will park your car for you).",
     children: "Children",
     childrenContent:
-      "If a child becomes restless or cries during the ceremony, we kindly ask that you step outside the main area momentarily.",
+      "Children are not allowed; this is an adults-only celebration.",
     gifts: "Gifts",
     giftsContent:
       "Your presence is our greatest gift. If you'd like to give us something, you may use the following option:",
@@ -140,7 +138,7 @@ export const translations = {
       "Doors open at 5:00 PM. Please do not arrive before that time.",
     photography: "Photography",
     photographyContent:
-      "We love that you'll take photos! If you share them on social media, we kindly ask that you choose flattering images of everyone.",
+      "Photos will be taken by professionals, but we invite you to upload your photos to our shared gallery too.",
     // RSVP
     rsvpTitle: "RSVP",
     rsvpSubtitle: "Will you join us?",
