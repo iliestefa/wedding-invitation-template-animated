@@ -68,8 +68,9 @@ export const translations = {
       "Por favor, confirma tu asistencia lo antes posible para reservar tu espacio y finalizar los detalles de la celebración.",
     rsvpBtn: "Confirmar por WhatsApp",
     // Closing
-    verse: '"El que no ama no conoce a Dios, porque Dios es amor."',
-    verseRef: "1 Juan 4:8",
+    verse:
+      "El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso.",
+    verseRef: "1 Corintios 13:4",
     // Hint
     scrollHint: "Desliza para abrir",
     // Footer
@@ -146,8 +147,9 @@ export const translations = {
       "Please confirm your attendance as soon as possible so we can reserve your spot and finalize the celebration details.",
     rsvpBtn: "Confirm via Text Message",
     // Closing
-    verse: '"Whoever does not love does not know God, because God is love."',
-    verseRef: "1 John 4:8",
+    verse:
+      "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.",
+    verseRef: "1 Corinthians 13:4",
     // Hint
     scrollHint: "Scroll to open",
     // Footer
