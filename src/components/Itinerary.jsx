@@ -1,4 +1,5 @@
 import { useT } from "../i18n";
+import { COUPLE } from "../config";
 
 const iconMap = {
   rings: (
@@ -82,7 +83,7 @@ export default function Itinerary() {
     <div className="photo rv" style={{ aspectRatio: "4/5", marginTop: "54px" }}>
       <img
         src="https://i.postimg.cc/0Q4yXm1c/parejaboda.jpg"
-        alt="Juan y Juana"
+        alt={COUPLE}
         onError={(e) => {
           e.target.parentElement.style.background =
             "linear-gradient(160deg,#aeb892,#7e8862)";

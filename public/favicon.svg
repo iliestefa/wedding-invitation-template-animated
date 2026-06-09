@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <circle cx="50" cy="50" r="50" fill="#6b7550"/>
   <circle cx="50" cy="50" r="43" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
-  <text x="50" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="32" letter-spacing="2" fill="rgba(255,255,255,0.9)">J&amp;J</text>
+  <text x="50" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="32" letter-spacing="2" fill="rgba(255,255,255,0.9)">A&amp;M</text>
 </svg>
