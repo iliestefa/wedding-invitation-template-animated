@@ -5,8 +5,8 @@ export const translations = {
     saturday: "SÁBADO",
     september: "SEPTIEMBRE",
     october: "OCTUBRE",
-    phrase: "Nuestro feliz para siempre llegó.",
-    ourSong: "Nuestra canción — Young and Beautiful",
+    phrase: "El destino nos unió, el amor nos hizo inseparables....",
+    ourSong: "Nuestra canción — Perfect",
     playPause: "Reproducir / pausar",
     // GreenSection
     countdown: "FALTAN",
@@ -82,8 +82,8 @@ export const translations = {
     saturday: "SATURDAY",
     september: "SEPTEMBER",
     october: "OCTOBER",
-    phrase: "Our happily ever after has arrived.",
-    ourSong: "Our song — Young and Beautiful",
+    phrase: "Destiny brought us together, love made us inseparable…",
+    ourSong: "Our song — Perfect",
     playPause: "Play / pause",
     // GreenSection
     countdown: "COUNTDOWN",
@@ -94,7 +94,7 @@ export const translations = {
     story: `I met Juan on a trip to the beach. We began sharing conversations, laughter,
       and small experiences that, little by little, created something special
       between us. Everything flowed naturally, and the rest is history...`,
-    storyBy: "— Juana",
+    storyBy: "— María",
     // EventSection
     venueName: "Ex Convento de San Hipólito",
     venueAddr:

@@ -1,4 +1,5 @@
 import { useT } from "../i18n";
+import { COUPLE } from "../config";
 
 export default function EventSection() {
   const t = useT();
@@ -60,7 +61,7 @@ export default function EventSection() {
     <div className="photo rv">
       <img
         src="https://i.postimg.cc/gk97yJLs/pedidademano.jpg"
-        alt="Juan y Juana"
+        alt={COUPLE}
         onError={(e) => {
           e.target.parentElement.style.background =
             "linear-gradient(160deg,#aeb892,#7e8862)";

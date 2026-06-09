@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { useT } from "./i18n";
+import { INITIALS } from "./config";
 
 import Intro from "./components/Intro";
 import GreenSection from "./components/GreenSection";
@@ -93,7 +94,7 @@ export default function App() {
   return (
     <>
       <audio ref={audioRef} loop preload="none">
-        <source src="/music.mp3" type="audio/mpeg" />
+        <source src={`${import.meta.env.BASE_URL}music.mp3`} type="audio/mpeg" />
       </audio>
 
       {/* Fondo oscuro — solo visible mientras el contenido no ha subido a taparlo */}
@@ -309,7 +310,7 @@ export default function App() {
                   letterSpacing="4"
                   fill="rgba(255,255,255,0.9)"
                 >
-                  J&amp;J
+                  {INITIALS}
                 </text>
               </g>
             </svg>

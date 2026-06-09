@@ -1,4 +1,5 @@
 import { useT } from "../i18n";
+import { COUPLE } from "../config";
 export default function Intro({ audioRef, playing, setPlaying }) {
   const t = useT();
 
@@ -20,10 +21,10 @@ export default function Intro({ audioRef, playing, setPlaying }) {
         className="mono pf rv"
         style={{ fontSize: "clamp(48px, 12vw, 72px)" }}
       >
-        J<span className="bar" />J
+        A<span className="bar" />M
       </div>
       <div className="casamos rv">{t.wereGettingMarried}</div>
-      <div className="intro-names rv">Juan &amp; Juana</div>
+      <div className="intro-names rv">{COUPLE}</div>
       <div className="datebox rv" style={{ marginTop: "20px" }}>
         <div className="side">
           <div className="l" />
@@ -46,7 +47,7 @@ export default function Intro({ audioRef, playing, setPlaying }) {
       <div className="np-photo">
         <img
           src="https://i.postimg.cc/8CMKfCFX/image.webp"
-          alt="Juan y Juana"
+          alt={`${COUPLE}`}
           onError={(e) => {
             e.target.parentElement.style.background =
               "linear-gradient(160deg,#aeb892,#7e8862)";

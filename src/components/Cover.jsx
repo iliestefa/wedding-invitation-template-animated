@@ -1,3 +1,5 @@
+import { GROOM, BRIDE, INITIALS, INITIALS_DISPLAY } from "../config";
+
 export default function Cover({ progress }) {
   // Solapa: abre entre progress 0 → 0.55
   const flapP = Math.min(1, progress / 0.55);
@@ -88,11 +90,11 @@ export default function Cover({ progress }) {
 
           {/* Texto centrado en el cuerpo */}
           <div className="env-txt" style={{ opacity: textOp }}>
-            <div className="env-mono gv">J &amp; J</div>
+            <div className="env-mono gv">{INITIALS_DISPLAY}</div>
             <div className="env-names">
-              <span className="gv env-n">Juan</span>
+              <span className="gv env-n">{GROOM}</span>
               <span className="env-a">&amp;</span>
-              <span className="gv env-n">Juana</span>
+              <span className="gv env-n">{BRIDE}</span>
             </div>
             <div className="env-d">12 · 09 · 2026</div>
             <div className="env-s">Nos casamos</div>
@@ -170,7 +172,7 @@ export default function Cover({ progress }) {
                   fontSize="24"
                   fill="rgba(255,255,255,0.9)"
                 >
-                  J&amp;J
+                  {INITIALS}
                 </text>
               </g>
             </svg>
