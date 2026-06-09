@@ -8,7 +8,7 @@ export default function Closing() {
     <section className="closing" data-stagger="true">
       <div className="closing-hero rv">
         <img
-          src="https://i.postimg.cc/fTXtrwWg/closedimage.jpg"
+          src="https://i.postimg.cc/GhStXJ2C/pareja.jpg"
           alt={COUPLE}
           onError={(e) => {
             e.target.parentElement.style.background =
@@ -18,10 +18,9 @@ export default function Closing() {
         />
         <div className="closing-overlay">
           <div className="closing-mono pf">
-            J<span className="bar" />J
+            A<span className="bar" />M
           </div>
           <p className="closing-verse gv">{t.verse}</p>
-          <div className="closing-ref">{t.verseRef}</div>
           <div className="closing-deco">
             <span />
             <span />

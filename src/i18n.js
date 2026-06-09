@@ -67,8 +67,7 @@ export const translations = {
     rsvpBtn: "Confirmar por WhatsApp",
     // Closing
     verse:
-      "El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso.",
-    verseRef: "1 Corintios 13:4",
+      "Me gusta que nos amemos sin necesitarnos, porque significa que día tras día elegimos estar juntos. No somos dos mitades que se buscan para completarse, sino dos almas que deciden compartir el mismo viaje.",
     // Hint
     scrollHint: "Desliza para abrir",
     // Footer
@@ -141,8 +140,7 @@ export const translations = {
     rsvpBtn: "Confirm via Text Message",
     // Closing
     verse:
-      "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.",
-    verseRef: "1 Corinthians 13:4",
+      "I love that we love each other without needing each other, because it means that day after day we choose to be together. We are not two halves looking to complete each other, but two souls who decide to share the same journey.",
     // Hint
     scrollHint: "Scroll to open",
     // Footer

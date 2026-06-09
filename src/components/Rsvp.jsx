@@ -5,8 +5,8 @@ export default function Rsvp() {
   const t = useT();
   const lang = useLang();
 
-  const waUrl = `https://wa.me/10000000000?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20${encodeURIComponent(COUPLE_ES)}`;
-  const smsUrl = `sms:+19856872442&body=Hi!%20I%20confirm%20my%20attendance%20to%20${encodeURIComponent(COUPLE + "'s")}%20wedding`;
+  const waUrl = `https://wa.me/?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20${encodeURIComponent(COUPLE_ES)}`;
+  const smsUrl = `sms:?body=Hi!%20I%20confirm%20my%20attendance%20to%20${encodeURIComponent(COUPLE + "'s")}%20wedding`;
 
   const isEn = lang === "en";
   const href = isEn ? smsUrl : waUrl;
