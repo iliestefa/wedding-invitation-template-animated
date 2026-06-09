@@ -24,14 +24,18 @@ export const translations = {
     venueAddr:
       "Av. Hidalgo 107, Centro Histórico, Guerrero, 06300 Ciudad de México, CDMX, México",
     viewLocation: "Ver ubicación",
-    ceremony: "Ceremonia",
     reception: "Recepción",
     // Itinerary
     itinerary: "Itinerario",
-    cocktail: "Cóctel y fotos",
-    firstDance: "Primer baile",
+    ceremony: "Ceremonia",
+    photoSession: "Sesión de fotos principal",
+    toast: "Brindis y discursos",
     dinner: "Cena",
+    firstDance: "Primer baile",
+    bouquetToss: "Lanzar el ramo",
+    cakeCutting: "Cortar el pastel",
     party: "Fiesta",
+    farewell: "Despedida",
     // GoodToKnow
     information: "Información",
     dressCode: "Vestimenta",
@@ -100,14 +104,18 @@ export const translations = {
     venueAddr:
       "Av. Hidalgo 107, Centro Histórico, Guerrero, 06300 Mexico City, CDMX, Mexico",
     viewLocation: "View location",
-    ceremony: "Ceremony",
     reception: "Reception",
     // Itinerary
     itinerary: "Itinerary",
-    cocktail: "Cocktail & photos",
-    firstDance: "First dance",
+    ceremony: "Ceremony",
+    photoSession: "Main photo session",
+    toast: "Toast and speeches",
     dinner: "Dinner",
+    firstDance: "First dance",
+    bouquetToss: "Bouquet toss",
+    cakeCutting: "Cake cutting",
     party: "Party",
+    farewell: "Farewell",
     // GoodToKnow
     information: "Information",
     dressCode: "Dress code",
