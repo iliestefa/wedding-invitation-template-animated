@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { useT } from '../i18n';
+import { useAnimated } from '../context/AnimatedContext';
 
 export default function GoodToKnow() {
   const [openIdx, setOpenIdx] = useState(null);
   const t = useT();
+  const { dressCodeItems, giftsContent, photographyContent, goodToKnowItems } = useAnimated();
 
   const ITEMS = [
     {
       title: t.dressCode,
       content: (
         <>
-          {t.dressCodeContent.map((d, i) => (
+          {(dressCodeItems || []).map((d, i) => (
             <p key={i}><strong>{d.label}</strong> {d.text}</p>
           ))}
         </>
@@ -18,9 +20,16 @@ export default function GoodToKnow() {
     },
     {
       title: t.gifts,
-      content: <p>{t.giftsContent}</p>,
+      content: <p>{giftsContent}</p>,
     },
-    { title: t.photography, content: <p>{t.photographyContent}</p> },
+    {
+      title: t.photography,
+      content: <p>{photographyContent}</p>,
+    },
+    ...(goodToKnowItems || []).map((item) => ({
+      title: item.title,
+      content: <p>{item.content}</p>,
+    })),
   ];
 
   const renderItem = (item, i) => {

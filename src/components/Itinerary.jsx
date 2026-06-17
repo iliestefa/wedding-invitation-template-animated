@@ -1,48 +1,27 @@
-import { useT } from "../i18n";
-import { COUPLE } from "../config";
+import { useT } from '../i18n';
+import { useAnimated } from '../context/AnimatedContext';
 
 const iconMap = {
   ceremony: (
-    <i
-      className="fa-solid fa-church"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-church" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   photoSession: (
-    <i
-      className="fa-solid fa-camera"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-camera" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   toast: (
-    <i
-      className="fa-solid fa-champagne-glasses"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-champagne-glasses" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   dinner: (
-    <i
-      className="fa-solid fa-utensils"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-utensils" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   firstDance: (
-    <i
-      className="fa-solid fa-music"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-music" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   bouquetToss: (
-    <i
-      className="fa-solid fa-spa"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-spa" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   cakeCutting: (
-    <i
-      className="fa-solid fa-cake-candles"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-cake-candles" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
   party: (
     <svg viewBox="0 0 256 256" width="22" height="22" fill="var(--sage)">
@@ -50,54 +29,44 @@ const iconMap = {
     </svg>
   ),
   farewell: (
-    <i
-      className="fa-solid fa-heart"
-      style={{ fontSize: "20px", color: "var(--sage)" }}
-    />
+    <i className="fa-solid fa-heart" style={{ fontSize: '20px', color: 'var(--sage)' }} />
   ),
 };
 
+const defaultIcon = iconMap.farewell;
+
 export default function Itinerary() {
   const t = useT();
+  const { itineraryItems, couple, imageItinerary } = useAnimated();
 
-  const items = [
-    { time: "18:00", name: t.ceremony, icon: "ceremony" },
-    { time: "18:45", name: t.photoSession, icon: "photoSession" },
-    { time: "19:30", name: t.toast, icon: "toast" },
-    { time: "20:00", name: t.dinner, icon: "dinner" },
-    { time: "21:00", name: t.firstDance, icon: "firstDance" },
-    { time: "21:30", name: t.bouquetToss, icon: "bouquetToss" },
-    { time: "21:45", name: t.cakeCutting, icon: "cakeCutting" },
-    { time: "22:00", name: t.party, icon: "party" },
-    { time: "00:00", name: t.farewell, icon: "farewell" },
-  ];
+  const items = (itineraryItems || []).map((item) => ({
+    ...item,
+    icon: iconMap[item.id] ?? defaultIcon,
+  }));
 
   const itiList = (
     <div className="iti-list">
       {items.map((item, i) => {
         const isLeft = i % 2 === 0;
         return (
-          <div
-            className={`iti-item rv ${isLeft ? "iti-left" : "iti-right"}`}
-            key={i}
-          >
+          <div className={`iti-item rv ${isLeft ? 'iti-left' : 'iti-right'}`} key={item.id || i}>
             <div className="iti-txt">
               {isLeft && (
                 <>
                   <div className="iti-time">{item.time}</div>
-                  <div className="iti-name">{item.name}</div>
+                  <div className="iti-name">{item.label}</div>
                 </>
               )}
             </div>
             <div className="iti-center">
               {i < items.length - 1 && <div className="iti-line" />}
-              <div className="iti-ic">{iconMap[item.icon]}</div>
+              <div className="iti-ic">{item.icon}</div>
             </div>
             <div className="iti-txt">
               {!isLeft && (
                 <>
                   <div className="iti-time">{item.time}</div>
-                  <div className="iti-name">{item.name}</div>
+                  <div className="iti-name">{item.label}</div>
                 </>
               )}
             </div>
@@ -108,13 +77,12 @@ export default function Itinerary() {
   );
 
   const itiPhoto = (
-    <div className="photo rv" style={{ aspectRatio: "4/5", marginTop: "54px" }}>
+    <div className="photo rv" style={{ aspectRatio: '4/5', marginTop: '54px' }}>
       <img
-        src="https://i.postimg.cc/0Q4yXm1c/parejaboda.jpg"
-        alt={COUPLE}
+        src={imageItinerary}
+        alt={couple}
         onError={(e) => {
-          e.target.parentElement.style.background =
-            "linear-gradient(160deg,#aeb892,#7e8862)";
+          e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)';
           e.target.remove();
         }}
       />

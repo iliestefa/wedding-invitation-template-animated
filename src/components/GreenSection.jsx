@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import { useT } from "../i18n";
+import { useState, useEffect } from 'react';
+import { useT } from '../i18n';
+import { useAnimated } from '../context/AnimatedContext';
 
 function useCountdown(targetDate) {
-  const [time, setTime] = useState({ d: "–", h: "–", m: "–", s: "–" });
+  const [time, setTime] = useState({ d: '–', h: '–', m: '–', s: '–' });
   useEffect(() => {
     const target = new Date(targetDate).getTime();
-    const p2 = (n) => String(n).padStart(2, "0");
+    const p2 = (n) => String(n).padStart(2, '0');
     function tick() {
       const diff = target - Date.now();
       if (diff >= 0) {
@@ -25,8 +26,14 @@ function useCountdown(targetDate) {
 }
 
 export default function GreenSection() {
-  const { d, h, m, s } = useCountdown("2026-09-12T17:30:00-05:00");
   const t = useT();
+  const { weddingDateIso, weddingTime, story, storyBy } = useAnimated();
+
+  const [dateStr] = (weddingDateIso || '2026-09-12').split('T');
+  const time      = weddingTime || '17:30';
+  const targetDate = `${dateStr}T${time}:00`;
+
+  const { d, h, m, s } = useCountdown(targetDate);
 
   return (
     <section className="green">
@@ -54,18 +61,11 @@ export default function GreenSection() {
           </div>
         </div>
 
-        <div
-          style={{
-            width: "2px",
-            height: "18px",
-            background: "rgba(255,255,255,0.3)",
-            margin: "18px auto 0",
-          }}
-        />
+        <div style={{ width: '2px', height: '18px', background: 'rgba(255,255,255,0.3)', margin: '18px auto 0' }} />
 
         <p className="story">
-          {t.story}
-          <span className="by">{t.storyBy}</span>
+          {story}
+          <span className="by">{storyBy}</span>
         </p>
       </div>
     </section>
