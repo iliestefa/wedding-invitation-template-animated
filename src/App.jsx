@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { useT } from './i18n';
 import { translations } from './i18n';
-import { GROOM, BRIDE } from './config';
+import { GROOM, BRIDE, IMAGE_HERO, IMAGE_EVENT, IMAGE_ITINERARY, IMAGE_CLOSING } from './config';
 import { AnimatedTemplateProvider, useAnimated } from './context/AnimatedContext';
 
 import Intro from './components/Intro';
@@ -47,10 +47,10 @@ const STANDALONE_DATA = {
   goodToKnowItems:     [],
   verse:               es.verse,
   musicUrl:        `${import.meta.env.BASE_URL}music.mp3`,
-  imageHero:       'https://i.postimg.cc/8CMKfCFX/image.webp',
-  imageEvent:      'https://i.postimg.cc/gk97yJLs/pedidademano.jpg',
-  imageItinerary:  'https://i.postimg.cc/0Q4yXm1c/parejaboda.jpg',
-  imageClosing:    'https://i.postimg.cc/GhStXJ2C/pareja.jpg',
+  imageHero:       IMAGE_HERO,
+  imageEvent:      IMAGE_EVENT,
+  imageItinerary:  IMAGE_ITINERARY,
+  imageClosing:    IMAGE_CLOSING,
 };
 
 export default function App() {
