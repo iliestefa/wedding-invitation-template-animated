@@ -1,32 +1,38 @@
-import { useT } from "../i18n";
-import { COUPLE } from "../config";
+import { useAnimated } from '../context/AnimatedContext';
 
 export default function Closing() {
-  const t = useT();
+  const { couple, initials, verse, imageClosing, weddingDateDisplay, weddingDateIso } = useAnimated();
+
+  const [gi, bi] = (initials || 'A&M').split('&');
+
+  const displayDate = weddingDateDisplay || (() => {
+    const [dateStr] = (weddingDateIso || '2026-09-12').split('T');
+    const [yr, mo, dy] = (dateStr || '2026-09-12').split('-').map(Number);
+    return `${String(dy).padStart(2,'0')} · ${String(mo).padStart(2,'0')} · ${yr}`;
+  })();
 
   return (
     <section className="closing" data-stagger="true">
       <div className="closing-hero rv">
         <img
-          src="https://i.postimg.cc/GhStXJ2C/pareja.jpg"
-          alt={COUPLE}
+          src={imageClosing}
+          alt={couple}
           onError={(e) => {
-            e.target.parentElement.style.background =
-              "linear-gradient(160deg,#aeb892,#7e8862)";
+            e.target.parentElement.style.background = 'linear-gradient(160deg,#aeb892,#7e8862)';
             e.target.remove();
           }}
         />
         <div className="closing-overlay">
           <div className="closing-mono pf">
-            A<span className="bar" />M
+            {gi}<span className="bar" />{bi}
           </div>
-          <p className="closing-verse gv">{t.verse}</p>
+          <p className="closing-verse gv">{verse}</p>
           <div className="closing-deco">
             <span />
             <span />
             <span />
           </div>
-          <div className="closing-date">12 · 09 · 2026</div>
+          <div className="closing-date">{displayDate}</div>
         </div>
       </div>
     </section>
