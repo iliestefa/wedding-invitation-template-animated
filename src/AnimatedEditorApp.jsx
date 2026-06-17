@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { useT } from './i18n';
 import { useAnimated } from './context/AnimatedContext';
-import defaultMusicUrl from '../public/music.mp3';
+import defaultMusicUrl from './assets/music.mp3';
 
 import Intro from './components/Intro';
 import GreenSection from './components/GreenSection';

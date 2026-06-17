@@ -1,8 +1,19 @@
 {
-  "name": "wedding-invitation-green",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@iliestefa/wedding-animated",
+  "version": "1.0.0",
   "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "exports": {
+    "./AnimatedEditorApp": "./src/AnimatedEditorApp.jsx",
+    "./context": "./src/context/AnimatedContext.jsx",
+    "./components/*": "./src/components/*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
